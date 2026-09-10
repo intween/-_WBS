@@ -23,9 +23,12 @@ const toMap = (states) =>
     return acc;
   }, {});
 
+// 낙관적 업데이트용. 아직 상태가 없는 업무를 처음 수정하면 statesById[taskId] 가
+// undefined 라서, 그대로 펼치면 links/checklist 가 빠진 채로 화면에 내려간다.
+// 저장이 끝나기 전 이 값으로 렌더링되므로 여기서 기본값을 채워준다.
 const mergePatch = (statesById, taskId, patch) => ({
   ...statesById,
-  [taskId]: { ...statesById[taskId], ...patch, taskId },
+  [taskId]: normalizeTaskState({ ...statesById[taskId], ...patch, taskId }),
 });
 
 export const taskReducer = (state, action) => {

@@ -1,10 +1,12 @@
 import { createLocalAdapter } from './localAdapter';
 import { createHttpAdapter } from './httpAdapter';
+import { createSupabaseAdapter } from './supabaseAdapter';
 import { STORE_MODES } from './types';
 
 const ADAPTERS = {
   [STORE_MODES.local]: createLocalAdapter,
   [STORE_MODES.http]: createHttpAdapter,
+  [STORE_MODES.supabase]: createSupabaseAdapter,
 };
 
 export const resolveStoreMode = () => {

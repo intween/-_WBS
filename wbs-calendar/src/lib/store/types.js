@@ -1,7 +1,7 @@
 import { DEFAULT_STATUS, STATUS_KEYS } from '@/constants/status';
 import { isValidISO } from '@/utils/date';
 
-export const STORE_MODES = { local: 'local', http: 'http' };
+export const STORE_MODES = { local: 'local', http: 'http', supabase: 'supabase' };
 
 export const STORE_METHODS = ['loadAll', 'update', 'reset', 'subscribe'];
 
