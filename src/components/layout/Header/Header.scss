@@ -1,0 +1,186 @@
+@use '@/styles/abstracts' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  background-color: $c-surface;
+  border-bottom: $border-w solid $c-border;
+
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: $sp-5;
+    padding: $sp-3 $sp-4;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__identity {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  &__eyebrow {
+    @include truncate(1);
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &__title {
+    font-size: $fs-lg;
+    color: $c-navy;
+  }
+
+  &__range {
+    font-size: $fs-sm;
+    color: $c-text-faint;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__progress {
+    flex: 1 1 auto;
+    max-width: 420px;
+    min-width: 160px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $sp-3;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  &__dday {
+    padding: $sp-1 $sp-2;
+    font-size: $fs-md;
+    font-weight: $fw-bold;
+    font-variant-numeric: tabular-nums;
+    color: $c-surface;
+    background-color: $c-navy;
+    border-radius: $radius-sm;
+
+    &--past {
+      background-color: $c-danger;
+    }
+  }
+
+  &__demo {
+    padding: $sp-1 $sp-2;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    color: $c-hold;
+    background-color: rgba($c-hold, .12);
+    border-radius: $radius-sm;
+  }
+
+  &__offline {
+    @include button-reset;
+    @include focus-ring;
+
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-1;
+    padding: $sp-1 $sp-2;
+    font-size: $fs-sm;
+    color: $c-danger;
+    background-color: rgba($c-danger, .1);
+    border-radius: $radius-sm;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+    padding-left: $sp-3;
+    border-left: $border-w solid $c-border;
+  }
+
+  &__user-name {
+    @include truncate(1);
+    max-width: 8em;
+    font-size: $fs-base;
+    font-weight: $fw-medium;
+  }
+
+  // --- 탭 ---
+  &__tabs {
+    display: flex;
+    gap: $sp-1;
+    padding: 0 $sp-4;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__tab {
+    @include button-reset;
+    @include focus-ring;
+
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-1;
+    padding: $sp-2 $sp-3;
+    font-size: $fs-base;
+    color: $c-text-mute;
+    border-bottom: 2px solid transparent;
+    transition: color $transition, border-color $transition;
+
+    &:hover {
+      color: $c-text;
+    }
+
+    &--active {
+      color: $c-navy;
+      font-weight: $fw-bold;
+      border-bottom-color: $c-navy;
+    }
+  }
+
+  // --- 모바일 압축 ---
+  &__compact {
+    display: none;
+
+    @include mobile {
+      display: block;
+      padding: $sp-2 $sp-3;
+    }
+  }
+
+  &__compact-top {
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+    margin-bottom: $sp-2;
+  }
+
+  &__compact-title {
+    @include truncate(1);
+    flex: 1 1 auto;
+    font-size: $fs-md;
+    font-weight: $fw-bold;
+    color: $c-navy;
+  }
+
+  &__compact-count {
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &__compact-user {
+    @include button-reset;
+    @include flex-center;
+    @include focus-ring;
+    flex-shrink: 0;
+  }
+
+  &__compact-offline {
+    margin-top: $sp-1;
+    font-size: $fs-sm;
+    color: $c-danger;
+  }
+}

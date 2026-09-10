@@ -1,0 +1,94 @@
+@use '@/styles/abstracts' as *;
+
+.task-card {
+  @include button-reset;
+  @include card($sp-2);
+  @include focus-ring;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+  width: 100%;
+  text-align: left;
+  transition: border-color $transition, box-shadow $transition, opacity $transition;
+
+  &:hover {
+    border-color: $c-doing;
+  }
+
+  &__title {
+    @include truncate(2);
+    font-size: $fs-base;
+    line-height: $lh-tight;
+    color: $c-text;
+  }
+
+  &__foot {
+    display: flex;
+    align-items: center;
+    gap: $sp-1;
+  }
+
+  &__marks {
+    display: flex;
+    align-items: center;
+    gap: $sp-1;
+    margin-left: auto;
+    color: $c-text-faint;
+  }
+
+  &__mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__mark-count {
+    font-size: $fs-xs;
+    line-height: 1;
+  }
+
+  &__overdue-dot {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 8px;
+    height: 8px;
+    background-color: $c-danger;
+    border: 1.5px solid $c-surface;
+    border-radius: $radius-full;
+  }
+
+  // --- 완료 ---
+  &--done {
+    opacity: .55;
+
+    .task-card__title {
+      text-decoration: line-through;
+      color: $c-text-mute;
+    }
+  }
+
+  // --- 상세 패널에서 열려 있음 ---
+  &--selected {
+    border-color: $c-navy;
+    box-shadow: 0 0 0 2px rgba($c-navy, .18);
+  }
+
+  // --- 다른 사람이 방금 바꿈 ---
+  &--highlighted {
+    @include highlight-flash;
+  }
+
+  // 모바일 터치 영역
+  @include mobile {
+    min-height: $touch-target;
+    padding: $sp-3;
+    gap: $sp-2;
+
+    .task-card__title {
+      font-size: $fs-md;
+    }
+  }
+}

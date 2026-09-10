@@ -1,0 +1,49 @@
+// ---------------------------------------------
+// SCSS 함수
+// ---------------------------------------------
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:color';
+@use 'variables' as v;
+
+/// 스트림 id 로 색상 조회
+/// @param {String} $id - 'a' ~ 'g'
+@function stream-color($id) {
+  @if not map.has-key(v.$stream-colors, $id) {
+    @error '정의되지 않은 스트림 id 입니다: #{$id}';
+  }
+  @return map.get(v.$stream-colors, $id);
+}
+
+/// 업무 상태 key 로 색상 조회
+/// @param {String} $key - 'todo' | 'doing' | 'done' | 'hold'
+@function status-color($key) {
+  @if not map.has-key(v.$status-colors, $key) {
+    @error '정의되지 않은 상태 key 입니다: #{$key}';
+  }
+  @return map.get(v.$status-colors, $key);
+}
+
+/// 기간 id 로 색상 조회
+/// @param {String} $id - 'w1' ~ 'w8', 'wf'
+@function period-color($id) {
+  @if not map.has-key(v.$period-colors, $id) {
+    @error '정의되지 않은 기간 id 입니다: #{$id}';
+  }
+  @return map.get(v.$period-colors, $id);
+}
+
+/// px 를 rem 으로 변환 (root 16px 기준)
+@function rem($px, $base: 16px) {
+  @return math.div($px, $base) * 1rem;
+}
+
+/// 색상을 밝게
+@function tint($c, $amount) {
+  @return color.mix(#fff, $c, $amount);
+}
+
+/// 색상을 어둡게
+@function shade($c, $amount) {
+  @return color.mix(#000, $c, $amount);
+}

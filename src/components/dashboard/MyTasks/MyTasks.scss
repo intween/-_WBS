@@ -1,0 +1,80 @@
+@use '@/styles/abstracts' as *;
+
+.my-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+
+  &__item {
+    @include button-reset;
+    @include card($sp-2);
+    @include focus-ring;
+
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+    width: 100%;
+    text-align: left;
+    transition: border-color $transition;
+
+    &:hover {
+      border-color: $c-doing;
+    }
+
+    @include mobile {
+      @include touch-target;
+      flex-wrap: wrap;
+      padding: $sp-3;
+    }
+  }
+
+  &__accent {
+    flex-shrink: 0;
+    width: 3px;
+    align-self: stretch;
+    min-height: 28px;
+    border-radius: $radius-full;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__title {
+    @include truncate(1);
+    font-size: $fs-base;
+    color: $c-text;
+  }
+
+  &__meta {
+    @include truncate(1);
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+    flex-shrink: 0;
+  }
+
+  &__due {
+    font-size: $fs-sm;
+    color: $c-text-mute;
+
+    &--overdue {
+      color: $c-danger;
+      font-weight: $fw-medium;
+    }
+
+    &--today {
+      color: $c-doing;
+      font-weight: $fw-medium;
+    }
+  }
+}

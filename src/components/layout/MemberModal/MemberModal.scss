@@ -1,0 +1,45 @@
+@use '@/styles/abstracts' as *;
+
+.member-modal {
+  &__form {
+    display: flex;
+    gap: $sp-2;
+    margin-bottom: $sp-4;
+
+    @include mobile {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__input {
+    @include input-base;
+    height: 32px;
+    padding: 0 $sp-2;
+    flex: 1 1 0;
+    min-width: 0;
+
+    @include mobile {
+      height: $touch-target;
+      flex: 1 1 100%;
+    }
+  }
+
+  &__input--role {
+    flex: 1 1 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-2;
+  }
+
+  &__note {
+    margin-top: $sp-4;
+    padding-top: $sp-3;
+    border-top: $border-w solid $c-border;
+    font-size: $fs-sm;
+    line-height: $lh-base;
+    color: $c-text-mute;
+  }
+}

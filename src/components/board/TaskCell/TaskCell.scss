@@ -1,0 +1,24 @@
+@use '@/styles/abstracts' as *;
+
+.task-cell {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+  padding: $sp-2;
+  min-height: 64px;
+  background-color: $c-surface;
+  border-right: $border-w solid $c-border;
+  border-bottom: $border-w solid $c-border;
+
+  // 원래부터 업무가 없는 칸
+  &--inactive {
+    background-color: $c-panel-alt;
+  }
+
+  &__filtered {
+    @include flex-center;
+    min-height: 40px;
+    font-size: $fs-xs;
+    color: $c-text-faint;
+  }
+}

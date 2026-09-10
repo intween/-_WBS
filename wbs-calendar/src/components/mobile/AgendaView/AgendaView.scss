@@ -1,0 +1,131 @@
+@use '@/styles/abstracts' as *;
+
+.agenda-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+
+  &__weeks {
+    display: flex;
+    gap: var(--sp-1);
+    padding: var(--sp-2) var(--sp-3);
+    overflow-x: auto;
+    background: var(--surface-base);
+    border-bottom: 1px solid var(--border-default);
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__week {
+    @include focus-ring;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex: 0 0 auto;
+    min-height: 32px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+
+    &--active {
+      background: var(--brand-subtle);
+      border-color: var(--brand-border);
+      color: var(--brand-primary);
+    }
+  }
+
+  &__week-index {
+    font-size: var(--fs-secondary);
+  }
+
+  &__week-range {
+    font-size: var(--fs-meta);
+    opacity: .8;
+  }
+
+  &__body {
+    @include scrollbar-thin;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  &__date {
+    @include flex-between;
+    position: sticky;
+    top: 0;
+    z-index: $z-base;
+    height: var(--h-group-header);
+    padding: 0 var(--sp-3);
+    background: var(--surface-subtle);
+    border-bottom: 1px solid var(--border-default);
+    font-size: var(--fs-meta);
+    font-weight: $fw-medium;
+    color: var(--text-secondary);
+
+    &--today {
+      color: var(--brand-primary);
+    }
+  }
+
+  &__day-count {
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+  }
+}
+
+.agenda-task {
+  @include stream-tokens;
+  @include status-tokens;
+  @include focus-ring;
+  --stream-ink: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 100%;
+  min-height: $touch-target;
+  padding: var(--sp-2) var(--sp-3);
+  border-bottom: 1px solid var(--border-default);
+  background: var(--surface-base);
+  text-align: left;
+
+  &__bar {
+    flex: 0 0 auto;
+    width: 2px;
+    align-self: stretch;
+    background: var(--stream-ink);
+  }
+
+  &__text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__title {
+    @include truncate(2);
+    display: block;
+    font-size: var(--fs-body);
+    line-height: var(--lh-tight);
+  }
+
+  &__meta {
+    display: block;
+    margin-top: 2px;
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+  }
+
+  &--done &__title {
+    color: var(--text-tertiary);
+    text-decoration: line-through;
+  }
+
+  &--delayed {
+    background: var(--danger-bg);
+  }
+}

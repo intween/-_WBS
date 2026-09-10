@@ -1,0 +1,62 @@
+@use '@/styles/abstracts' as *;
+
+.select {
+  min-width: 0;
+
+  &__label {
+    display: block;
+    margin-bottom: $sp-1;
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &__control {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__field {
+    @include input-base;
+    @include focus-ring;
+
+    appearance: none;
+    padding-right: $sp-5;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: $c-panel;
+      color: $c-text-mute;
+      cursor: not-allowed;
+    }
+  }
+
+  &__chevron {
+    position: absolute;
+    right: $sp-2;
+    color: $c-text-mute;
+    pointer-events: none;
+  }
+
+  &--sm &__field {
+    height: 28px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: $fs-sm;
+
+    @include mobile {
+      height: 36px;
+      font-size: $fs-input-mobile;
+    }
+  }
+
+  &--md &__field {
+    height: 34px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    @include mobile {
+      height: $touch-target;
+    }
+  }
+}

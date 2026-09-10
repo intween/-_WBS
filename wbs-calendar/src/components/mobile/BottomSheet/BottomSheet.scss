@@ -1,0 +1,38 @@
+@use '@/styles/abstracts' as *;
+
+.bottom-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: $z-panel;
+  background: var(--overlay-scrim);
+
+  &__panel {
+    @include slide-up;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    max-height: 88dvh;
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+    background: var(--surface-base);
+    box-shadow: var(--shadow-md);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  &__grip {
+    @include flex-center;
+    flex: 0 0 auto;
+    height: 22px;
+    touch-action: none;
+    cursor: grab;
+  }
+
+  &__grip-bar {
+    width: 36px;
+    height: 3px;
+    border-radius: var(--radius-pill);
+    background: var(--border-strong);
+  }
+}

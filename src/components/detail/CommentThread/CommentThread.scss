@@ -1,0 +1,79 @@
+@use '@/styles/abstracts' as *;
+
+.comment-thread {
+  &__form {
+    margin-bottom: $sp-3;
+  }
+
+  &__form-foot {
+    @include flex-between($sp-2);
+    margin-top: $sp-1;
+  }
+
+  &__hint {
+    font-size: $fs-xs;
+    color: $c-text-faint;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-3;
+  }
+
+  &__item {
+    display: flex;
+    gap: $sp-2;
+    min-width: 0;
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+  }
+
+  &__author {
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    color: $c-text;
+  }
+
+  &__time {
+    font-size: $fs-xs;
+    color: $c-text-faint;
+  }
+
+  &__delete {
+    @include button-reset;
+    @include focus-ring;
+
+    margin-left: auto;
+    font-size: $fs-xs;
+    color: $c-text-faint;
+    border-radius: $radius-sm;
+
+    &:hover {
+      color: $c-danger;
+      text-decoration: underline;
+    }
+  }
+
+  &__text {
+    margin-top: 2px;
+    font-size: $fs-base;
+    line-height: $lh-base;
+    color: $c-text;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}

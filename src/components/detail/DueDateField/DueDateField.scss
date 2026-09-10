@@ -1,0 +1,23 @@
+@use '@/styles/abstracts' as *;
+
+.due-date-field {
+  display: flex;
+  align-items: flex-start;
+  gap: $sp-2;
+
+  .date-picker {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__badge {
+    flex-shrink: 0;
+    margin-top: 6px;
+    padding: 3px $sp-2;
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    color: $c-surface;
+    background-color: $c-danger;
+    border-radius: $radius-full;
+  }
+}

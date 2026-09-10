@@ -1,0 +1,132 @@
+@use '@/styles/abstracts' as *;
+
+.side-panel {
+  @include scrollbar-thin;
+  min-height: 0;
+  padding-bottom: var(--sp-6);
+  overflow-y: auto;
+  background: var(--surface-canvas);
+  border-right: 1px solid var(--border-default);
+
+  &__header {
+    @include flex-between;
+    @include hairline-bottom;
+    position: sticky;
+    top: 0;
+    z-index: $z-base;
+    height: var(--h-group-header);
+    padding: 0 var(--sp-4);
+    background: var(--surface-canvas);
+  }
+
+  &__heading {
+    @include truncate;
+    font-size: var(--fs-secondary);
+    font-weight: $fw-medium;
+    color: var(--text-primary);
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.side-section {
+  & + & {
+    margin-top: var(--sp-3);
+    border-top: 1px solid var(--border-default);
+  }
+
+  &__title {
+    @include flex-between;
+    position: sticky;
+    top: 0;
+    z-index: $z-base;
+    height: var(--h-group-header);
+    padding: 0 var(--sp-4);
+    background: var(--surface-canvas);
+    font-size: var(--fs-section-title);
+    font-weight: $fw-medium;
+    color: var(--text-secondary);
+  }
+
+  &__count {
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+  }
+
+  &__empty {
+    padding: 0 var(--sp-4);
+    line-height: var(--h-side-item);
+    font-size: var(--fs-secondary);
+    color: var(--text-tertiary);
+  }
+
+  &__toggle {
+    @include focus-ring;
+    width: 100%;
+    height: var(--h-side-item);
+    padding: 0 var(--sp-4);
+    text-align: left;
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+
+    &:hover {
+      background: var(--surface-subtle);
+      color: var(--text-primary);
+    }
+  }
+
+  &--danger &__title {
+    color: var(--danger);
+  }
+}
+
+.side-task {
+  @include stream-tokens;
+  @include status-tokens;
+  @include focus-ring;
+  --stream-ink: var(--text-tertiary);
+  --status-ink: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 100%;
+  height: var(--h-side-item);
+  padding: 0 var(--sp-4);
+  text-align: left;
+  transition: background $transition;
+
+  &:hover {
+    background: var(--surface-subtle);
+  }
+
+  &__bar {
+    flex: 0 0 auto;
+    width: 3px;
+    height: 14px;
+    border-radius: var(--radius-pill);
+    background: var(--stream-ink);
+  }
+
+  &__title {
+    @include truncate;
+    flex: 1 1 auto;
+    font-size: var(--fs-card-title);
+  }
+
+  &__date {
+    flex: 0 0 auto;
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &--delayed &__date {
+    color: var(--danger);
+  }
+
+  &--selected {
+    background: var(--brand-subtle);
+  }
+}

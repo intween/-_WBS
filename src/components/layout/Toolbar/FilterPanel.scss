@@ -1,0 +1,56 @@
+@use '@/styles/abstracts' as *;
+
+.filter-panel {
+  display: flex;
+  align-items: center;
+  gap: $sp-3;
+  flex-wrap: wrap;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+    gap: $sp-2;
+  }
+
+  &__group {
+    display: flex;
+    align-items: center;
+    gap: $sp-1;
+    flex-wrap: wrap;
+  }
+
+  &__chip {
+    @include button-reset;
+    @include focus-ring;
+
+    padding: 4px $sp-2;
+    font-size: $fs-sm;
+    color: $c-text-mute;
+    background-color: $c-surface;
+    border: $border-w solid $c-border;
+    border-radius: $radius-full;
+    transition: background-color $transition, color $transition, border-color $transition;
+
+    &:hover {
+      color: $c-text;
+      border-color: $c-text-faint;
+    }
+
+    &--active {
+      color: $c-surface;
+      background-color: $c-navy;
+      border-color: $c-navy;
+      font-weight: $fw-medium;
+
+      &:hover {
+        color: $c-surface;
+      }
+    }
+
+    @include mobile {
+      min-height: 34px;
+      padding: 0 $sp-3;
+      font-size: $fs-base;
+    }
+  }
+}

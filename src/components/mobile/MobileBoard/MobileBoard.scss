@@ -1,0 +1,30 @@
+@use '@/styles/abstracts' as *;
+
+.mobile-board {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+
+  &__content {
+    padding: $sp-3;
+  }
+
+  &__range {
+    margin-bottom: $sp-2;
+    font-size: $fs-sm;
+    color: $c-text-mute;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__reset {
+    @include button-reset;
+    @include focus-ring;
+    @include touch-target;
+
+    padding: 0 $sp-4;
+    font-size: $fs-base;
+    color: $c-doing;
+    border: $border-w solid $c-doing;
+    border-radius: $radius-sm;
+  }
+}

@@ -1,0 +1,17 @@
+@use '@/styles/abstracts' as *;
+
+.textarea {
+  @include input-base;
+  @include scrollbar-thin;
+
+  display: block;
+  resize: none;
+  line-height: $lh-base;
+  overflow-y: hidden;
+
+  &:disabled {
+    background-color: $c-panel;
+    color: $c-text-mute;
+    cursor: not-allowed;
+  }
+}

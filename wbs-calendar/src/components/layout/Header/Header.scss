@@ -1,0 +1,101 @@
+@use '@/styles/abstracts' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-width: 0;
+  height: var(--h-header);
+  padding: 0 var(--sp-4);
+  background: var(--surface-base);
+  border-bottom: 1px solid var(--border-default);
+
+  &__name {
+    @include truncate;
+    font-size: var(--fs-page-title);
+    font-weight: $fw-medium;
+  }
+
+  &__period {
+    flex: 0 0 auto;
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+  }
+
+  &__spacer {
+    flex: 1 1 auto;
+  }
+
+  &__progress {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    flex: 0 0 auto;
+  }
+
+  &__figures {
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  &__gauge {
+    display: block;
+    width: 88px;
+    height: 4px;
+    overflow: hidden;
+    border-radius: var(--radius-pill);
+    background: var(--surface-subtle-strong);
+  }
+
+  &__gauge-fill {
+    display: block;
+    height: 100%;
+    background: var(--brand-primary);
+    transition: width $transition;
+  }
+
+  &__dday {
+    flex: 0 0 auto;
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  &__help {
+    @include flex-center;
+    @include focus-ring;
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-control);
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+
+    &:hover {
+      background: var(--surface-subtle);
+      color: var(--text-primary);
+    }
+  }
+
+  @include mobile {
+    flex-wrap: wrap;
+    height: auto;
+    padding: var(--sp-2) var(--sp-4);
+
+    &__period,
+    &__help {
+      display: none;
+    }
+
+    &__progress {
+      order: 3;
+      flex: 1 0 100%;
+    }
+
+    &__gauge {
+      flex: 1 1 auto;
+      width: auto;
+    }
+  }
+}

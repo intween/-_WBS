@@ -1,0 +1,45 @@
+@use '@/styles/abstracts' as *;
+
+.month-grid {
+  &__title {
+    position: sticky;
+    top: 0;
+    z-index: $z-header;
+    height: var(--h-group-header);
+    padding: 0 var(--sp-1);
+    line-height: var(--h-group-header);
+    background: var(--surface-base);
+    border-top: 2px solid var(--border-strong);
+    border-bottom: 1px solid var(--border-default);
+    font-size: var(--fs-section-title);
+    font-weight: $fw-medium;
+    color: var(--text-secondary);
+  }
+
+  &__weekdays {
+    position: sticky;
+    top: var(--h-group-header);
+    z-index: $z-base;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    height: var(--h-weekday);
+    background: var(--surface-base);
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  &__weekday {
+    padding-left: 7px;
+    line-height: var(--h-weekday);
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+  }
+
+  &__body {
+    border-left: 1px solid var(--border-strong);
+  }
+
+  &__week {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,7 @@
+@use '@/styles/abstracts' as *;
+
+.calendar-view {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--sp-3) 0 var(--sp-6);
+}

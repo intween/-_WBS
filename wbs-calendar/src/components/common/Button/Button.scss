@@ -1,0 +1,85 @@
+@use '@/styles/abstracts' as *;
+
+.button {
+  @include flex-center;
+  @include focus-ring;
+  gap: 6px;
+  height: var(--h-control);
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--fs-control);
+  font-weight: $fw-regular;
+  white-space: nowrap;
+  transition: background $transition, border-color $transition, color $transition;
+
+  &:hover:not(:disabled) {
+    background: var(--surface-subtle);
+    color: var(--text-primary);
+  }
+
+  &--sm {
+    height: 24px;
+    padding: 0 8px;
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &--outline {
+    border-color: var(--border-default);
+    background: var(--surface-base);
+    color: var(--text-primary);
+  }
+
+  &--primary {
+    background: var(--brand-primary);
+    border-color: var(--brand-primary);
+    color: var(--on-solid);
+
+    &:hover:not(:disabled) {
+      background: var(--brand-hover);
+      border-color: var(--brand-hover);
+      color: var(--on-solid);
+    }
+
+    &:active:not(:disabled) {
+      background: var(--brand-pressed);
+    }
+  }
+
+  &--danger {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: var(--on-solid);
+
+    &:hover:not(:disabled) {
+      background: var(--danger);
+      color: var(--on-solid);
+      filter: brightness(.92);
+    }
+  }
+
+  &--active {
+    background: var(--brand-subtle);
+    border-color: var(--brand-border);
+    color: var(--brand-primary);
+
+    &:hover:not(:disabled) {
+      background: var(--brand-subtle-hover);
+      color: var(--brand-primary);
+    }
+  }
+
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  @include mobile {
+    min-height: 34px;
+  }
+}

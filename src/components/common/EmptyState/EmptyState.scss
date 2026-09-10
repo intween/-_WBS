@@ -1,0 +1,42 @@
+@use '@/styles/abstracts' as *;
+
+.empty-state {
+  @include flex-center(column, $sp-2);
+  text-align: center;
+  color: $c-text-mute;
+
+  &--md {
+    padding: $sp-6 $sp-4;
+  }
+
+  &--sm {
+    padding: $sp-4 $sp-3;
+  }
+
+  &__icon {
+    @include flex-center;
+    color: $c-text-faint;
+  }
+
+  &__title {
+    font-size: $fs-base;
+    font-weight: $fw-medium;
+    color: $c-text;
+  }
+
+  &--sm &__title {
+    font-size: $fs-sm;
+    font-weight: $fw-regular;
+    color: $c-text-mute;
+  }
+
+  &__description {
+    max-width: 30ch;
+    font-size: $fs-sm;
+    line-height: $lh-base;
+  }
+
+  &__action {
+    margin-top: $sp-1;
+  }
+}

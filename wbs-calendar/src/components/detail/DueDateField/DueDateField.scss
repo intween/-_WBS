@@ -1,0 +1,22 @@
+@use '@/styles/abstracts' as *;
+
+.due-date-field {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+
+  &__input {
+    @include focus-ring;
+    @include control;
+    border: 1px solid var(--border-default);
+    background: var(--surface-base);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @include mobile {
+    &__input {
+      min-height: $touch-target;
+      font-size: var(--fs-card-title);
+    }
+  }
+}

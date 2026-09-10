@@ -1,0 +1,38 @@
+@use '../abstracts' as *;
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: $fw-regular;
+  line-height: var(--lh-body);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-size: var(--fs-section-title);
+  font-weight: $fw-medium;
+  line-height: var(--lh-tight);
+}
+
+h2 {
+  font-size: var(--fs-card-title);
+  font-weight: $fw-medium;
+  line-height: var(--lh-tight);
+}
+
+h3 {
+  font-size: var(--fs-body);
+  font-weight: $fw-medium;
+  line-height: var(--lh-tight);
+}
+
+small {
+  font-size: var(--fs-meta);
+  color: var(--text-secondary);
+}
+
+.numeric {
+  font-variant-numeric: tabular-nums;
+}

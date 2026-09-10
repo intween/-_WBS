@@ -1,0 +1,36 @@
+@use '../abstracts' as *;
+
+html,
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  background: var(--surface-canvas);
+}
+
+#root {
+  height: 100%;
+}
+
+::selection {
+  background: var(--brand-subtle-hover);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--surface-base), 0 0 0 4px var(--brand-primary);
+}
+
+.sr-only {
+  @include visually-hidden;
+}
+
+@include mobile {
+  input,
+  textarea,
+  select {
+    font-size: var(--fs-card-title);
+  }
+}

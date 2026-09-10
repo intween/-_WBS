@@ -1,0 +1,119 @@
+@use '@/styles/abstracts' as *;
+
+.user-gate {
+  @include flex-center;
+  flex: 1 1 auto;
+  min-height: 100vh;
+  padding: $sp-4;
+  background-color: $c-bg;
+
+  &__card {
+    width: 100%;
+    max-width: 420px;
+    padding: $sp-5;
+    background-color: $c-surface;
+    border: $border-w solid $c-border;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-panel;
+
+    @include mobile {
+      padding: $sp-4;
+    }
+  }
+
+  &__header {
+    margin-bottom: $sp-4;
+    text-align: center;
+  }
+
+  &__eyebrow {
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &__title {
+    margin-top: $sp-1;
+    font-size: $fs-xl;
+    color: $c-navy;
+  }
+
+  &__description {
+    margin-top: $sp-2;
+    font-size: $fs-base;
+    color: $c-text-mute;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-2;
+  }
+
+  &__member {
+    @include button-reset;
+    @include focus-ring;
+    @include touch-target;
+
+    display: flex;
+    align-items: center;
+    gap: $sp-3;
+    width: 100%;
+    padding: $sp-2 $sp-3;
+    text-align: left;
+    background-color: $c-panel;
+    border: $border-w solid transparent;
+    border-radius: $radius-md;
+    transition: background-color $transition, border-color $transition;
+
+    &:hover {
+      background-color: $c-surface;
+      border-color: $c-doing;
+    }
+  }
+
+  &__member-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__member-name {
+    @include truncate(1);
+    font-size: $fs-md;
+    font-weight: $fw-medium;
+    color: $c-text;
+  }
+
+  &__member-role {
+    @include truncate(1);
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &__error {
+    @include flex-center(column, $sp-3);
+    padding: $sp-4 0;
+    text-align: center;
+  }
+
+  &__error-text {
+    font-size: $fs-base;
+    line-height: $lh-base;
+    color: $c-danger;
+  }
+
+  &__footer {
+    @include flex-center(column, $sp-2);
+    margin-top: $sp-4;
+    padding-top: $sp-3;
+    border-top: $border-w solid $c-border;
+  }
+
+  &__note {
+    font-size: $fs-sm;
+    line-height: $lh-base;
+    color: $c-text-faint;
+    text-align: center;
+  }
+}

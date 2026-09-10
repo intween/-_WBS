@@ -1,0 +1,27 @@
+@use '@/styles/abstracts' as *;
+
+.stream-label {
+  @include sticky-cell($z-sticky-col);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $sp-1;
+  padding: $sp-2;
+  border-left: $accent-border-w solid transparent;
+  border-right: $border-w solid $c-border;
+  border-bottom: $border-w solid $c-border;
+
+  &__name {
+    @include truncate(2);
+    font-size: $fs-base;
+    font-weight: $fw-medium;
+    line-height: $lh-tight;
+    color: $c-text;
+  }
+
+  &__count {
+    font-size: $fs-xs;
+    color: $c-text-mute;
+  }
+}

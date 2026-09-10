@@ -1,0 +1,45 @@
+@use '@/styles/abstracts' as *;
+
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  outline: none;
+
+  &__bubble {
+    position: absolute;
+    left: 50%;
+    z-index: $z-toast;
+    padding: $sp-1 $sp-2;
+    font-size: $fs-sm;
+    line-height: $lh-tight;
+    white-space: nowrap;
+    color: $c-surface;
+    background-color: rgba($c-text, .92);
+    border-radius: $radius-sm;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%);
+    transition: opacity $transition, visibility $transition;
+  }
+
+  &--top &__bubble {
+    bottom: calc(100% + #{$sp-1});
+  }
+
+  &--bottom &__bubble {
+    top: calc(100% + #{$sp-1});
+  }
+
+  &:hover &__bubble,
+  &:focus-within &__bubble {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // 터치 기기에서는 hover 가 어색하므로 표시하지 않는다.
+  @include mobile {
+    &__bubble {
+      display: none;
+    }
+  }
+}

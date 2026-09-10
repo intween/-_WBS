@@ -1,0 +1,85 @@
+@use '@/styles/abstracts' as *;
+
+.day-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-height: var(--day-min-height);
+  padding: 6px 7px;
+  background: var(--surface-base);
+  border-right: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
+
+  &--week-start {
+    border-left: 1px solid var(--border-strong);
+  }
+
+  &__band {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--onsite-band);
+  }
+
+  &__number {
+    font-size: var(--fs-secondary);
+    line-height: 16px;
+    color: var(--text-primary);
+  }
+
+  &__chips {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &__more {
+    @include focus-ring;
+    align-self: flex-start;
+    padding: 0 4px;
+    font-size: var(--fs-meta);
+    line-height: 16px;
+    color: var(--text-tertiary);
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  &--weekend {
+    background: var(--calendar-weekend-bg);
+  }
+
+  &--weekend &__number {
+    color: var(--text-secondary);
+  }
+
+  &--today-column {
+    background: var(--calendar-today-bg);
+  }
+
+  &--outside &__number,
+  &--outside &__chips {
+    opacity: .45;
+  }
+
+  &--today {
+    box-shadow: inset 0 0 0 2px var(--calendar-today-ring);
+  }
+
+  &--today &__number {
+    font-weight: $fw-medium;
+    color: var(--brand-primary);
+  }
+
+  &--droppable {
+    box-shadow: inset 0 0 0 1px var(--calendar-drop-ring);
+  }
+
+  &--over {
+    @include drop-target;
+  }
+}

@@ -1,0 +1,12 @@
+@use '@/styles/abstracts' as *;
+
+.owner-selector {
+  display: flex;
+  align-items: center;
+  gap: $sp-2;
+
+  &__select {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}

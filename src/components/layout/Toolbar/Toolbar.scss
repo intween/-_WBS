@@ -1,0 +1,58 @@
+@use '@/styles/abstracts' as *;
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: $z-toolbar;
+  padding: $sp-2 $sp-4;
+  background-color: $c-panel;
+  border-bottom: $border-w solid $c-border;
+
+  @include mobile {
+    position: static;
+    padding: $sp-2 $sp-3;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+    flex-wrap: wrap;
+  }
+
+  &__count {
+    font-size: $fs-sm;
+    color: $c-text-mute;
+    white-space: nowrap;
+  }
+
+  &__count-unit {
+    margin-left: 1px;
+  }
+
+  &__export {
+    display: flex;
+    gap: $sp-1;
+    margin-left: auto;
+  }
+
+  // 데스크탑에서는 필터를 항상 펼쳐두고 토글 버튼을 숨긴다.
+  &__filter-toggle {
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__filters {
+    margin-top: $sp-2;
+
+    @include mobile {
+      display: none;
+      margin-top: $sp-3;
+
+      &--open {
+        display: block;
+      }
+    }
+  }
+}

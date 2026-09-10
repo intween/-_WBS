@@ -1,0 +1,100 @@
+@use '@/styles/abstracts' as *;
+
+.checklist-editor {
+  &__count {
+    margin-bottom: var(--sp-1);
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    min-height: 24px;
+  }
+
+  &__text {
+    @include focus-ring;
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 22px;
+    padding: 0 4px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-chip);
+    background: transparent;
+    font-size: var(--fs-secondary);
+
+    &:hover,
+    &:focus {
+      border-color: var(--border-default);
+      background: var(--surface-base);
+    }
+  }
+
+  &__remove {
+    @include flex-center;
+    @include focus-ring;
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-chip);
+    color: var(--text-tertiary);
+
+    &:hover {
+      color: var(--danger);
+    }
+  }
+
+  &__add {
+    display: flex;
+    gap: var(--sp-1);
+    margin-top: var(--sp-1);
+  }
+
+  &__input {
+    @include focus-ring;
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 24px;
+    padding: 0 6px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-control);
+    background: var(--surface-base);
+    font-size: var(--fs-secondary);
+
+    &::placeholder {
+      color: var(--text-tertiary);
+    }
+  }
+
+  &__submit {
+    @include flex-center;
+    @include focus-ring;
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-control);
+    color: var(--text-secondary);
+
+    &:hover {
+      color: var(--brand-primary);
+      border-color: var(--brand-border);
+    }
+  }
+
+  @include mobile {
+    &__input,
+    &__text {
+      min-height: 34px;
+      font-size: var(--fs-card-title);
+    }
+
+    &__remove,
+    &__submit {
+      width: 34px;
+      height: 34px;
+    }
+  }
+}

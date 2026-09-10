@@ -1,0 +1,34 @@
+@use '@/styles/abstracts' as *;
+
+.badge {
+  @include status-tokens;
+  --status-ink: var(--text-tertiary);
+  --status-bg: var(--surface-subtle);
+  --status-border: var(--border-default);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 18px;
+  padding: 0 6px;
+  border: 1px solid var(--status-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-meta);
+  font-weight: $fw-regular;
+  line-height: 1;
+  color: var(--status-ink);
+  background: var(--status-bg);
+  white-space: nowrap;
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--status-ink);
+  }
+
+  &--solid {
+    color: var(--on-solid);
+    background: var(--status-ink);
+    border-color: var(--status-ink);
+  }
+}

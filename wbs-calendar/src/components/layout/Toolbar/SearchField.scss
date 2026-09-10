@@ -1,0 +1,43 @@
+@use '@/styles/abstracts' as *;
+
+.search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 220px;
+  max-width: 100%;
+
+  &__icon {
+    position: absolute;
+    left: 9px;
+    color: var(--text-tertiary);
+    pointer-events: none;
+  }
+
+  &__input {
+    @include focus-ring;
+    @include control;
+    width: 100%;
+    padding-left: 30px;
+    border: 1px solid var(--border-default);
+    background: var(--surface-base);
+
+    &::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    &::-webkit-search-cancel-button {
+      cursor: pointer;
+    }
+  }
+
+  @include mobile {
+    flex: 1 1 auto;
+    width: auto;
+
+    .search-field__input {
+      min-height: $touch-target;
+      font-size: var(--fs-card-title);
+    }
+  }
+}

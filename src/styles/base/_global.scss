@@ -1,0 +1,106 @@
+// ---------------------------------------------
+// 전역 레이아웃 / 공통 유틸 클래스
+// ---------------------------------------------
+@use '@/styles/abstracts' as *;
+
+body {
+  background-color: $c-bg;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+::selection {
+  background-color: rgba($c-doing, .22);
+}
+
+// 전역 포커스 링 (마우스 클릭 시에는 표시하지 않음)
+:focus-visible {
+  outline: 2px solid $c-doing;
+  outline-offset: 2px;
+}
+
+// 스크린리더 전용 텍스트
+.sr-only {
+  @include visually-hidden;
+}
+
+// 수치 표기 폭 고정
+.is-numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+// 오버레이가 열려 있는 동안 배경 스크롤 잠금
+.is-scroll-locked {
+  overflow: hidden;
+}
+
+// ---------------------------------------------
+// 앱 셸
+// 데스크탑: 화면 높이에 고정하고 보드 안에서만 스크롤
+// 모바일: 일반 페이지 스크롤 + 하단 탭바 여백
+// ---------------------------------------------
+.app {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+
+  @include desktop {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  @include mobile {
+    min-height: 100vh;
+  }
+
+  // 로딩 / 에러 / 설정 안내처럼 화면 하나만 보여줄 때
+  &--message {
+    @include flex-center;
+    padding: $sp-4;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+
+    @include desktop {
+      overflow-y: auto;
+    }
+
+    @include mobile {
+      // 하단 탭바에 콘텐츠가 가리지 않도록 여백 확보
+      @include safe-area-bottom($tabbar-height);
+    }
+  }
+
+  // 스윔레인 보드를 감싸는 영역 — 스크롤은 보드 자신이 처리한다.
+  &__board {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: $sp-4;
+    overflow: hidden;
+  }
+
+  &__panel {
+    padding: $sp-4;
+
+    @include mobile {
+      padding: $sp-3;
+    }
+  }
+
+  &__panel-title {
+    margin-bottom: $sp-3;
+    font-size: $fs-md;
+    color: $c-text;
+  }
+}

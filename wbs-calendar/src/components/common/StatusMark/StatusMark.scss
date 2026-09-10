@@ -1,0 +1,7 @@
+@use '@/styles/abstracts' as *;
+
+.status-mark {
+  flex: 0 0 auto;
+  display: block;
+  color: var(--status-ink);
+}

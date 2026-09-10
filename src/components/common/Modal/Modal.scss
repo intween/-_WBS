@@ -1,0 +1,87 @@
+@use '@/styles/abstracts' as *;
+
+.modal {
+  @include flex-center;
+  @include fade-in;
+
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  padding: $sp-4;
+  background-color: rgba($c-text, .4);
+
+  @include mobile {
+    // 모바일에서는 아래에서 올라오는 형태로 붙인다.
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: calc(100vh - #{$sp-6});
+    background-color: $c-surface;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-modal;
+    outline: none;
+
+    &--sm { max-width: 360px; }
+    &--md { max-width: 520px; }
+
+    @include mobile {
+      max-width: 100%;
+      max-height: 88vh;
+      border-radius: $radius-lg $radius-lg 0 0;
+      @include slide-up;
+      @include safe-area-bottom(0px);
+    }
+  }
+
+  &__header {
+    @include flex-between($sp-2);
+    padding: $sp-3 $sp-4;
+    border-bottom: $border-w solid $c-border;
+  }
+
+  &__title {
+    font-size: $fs-md;
+    font-weight: $fw-bold;
+    color: $c-text;
+  }
+
+  &__close {
+    @include button-reset;
+    @include flex-center;
+    @include focus-ring;
+
+    width: 28px;
+    height: 28px;
+    color: $c-text-mute;
+    border-radius: $radius-sm;
+
+    &:hover {
+      color: $c-text;
+      background-color: rgba($c-navy, .08);
+    }
+
+    @include mobile {
+      @include touch-target(36px);
+    }
+  }
+
+  &__body {
+    @include scrollbar-thin;
+    flex: 1 1 auto;
+    padding: $sp-4;
+    overflow-y: auto;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: $sp-2;
+    padding: $sp-3 $sp-4;
+    border-top: $border-w solid $c-border;
+  }
+}

@@ -1,0 +1,90 @@
+@use '@/styles/abstracts' as *;
+
+.task-chip {
+  @include stream-tokens;
+  @include status-tokens;
+  @include focus-ring;
+  --status-ink: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  height: var(--h-chip);
+  padding: 0 8px;
+  border-radius: var(--radius-chip);
+  background: var(--stream-bg);
+  text-align: left;
+  cursor: grab;
+  transition: background $transition, opacity $transition;
+
+  &:hover {
+    background: var(--stream-border);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &__bar {
+    flex: 0 0 auto;
+    width: 3px;
+    height: 14px;
+    border-radius: var(--radius-pill);
+    background: var(--stream-ink);
+  }
+
+  &__title {
+    @include truncate;
+    flex: 1 1 auto;
+    font-size: var(--fs-chip);
+    line-height: var(--lh-tight);
+    color: var(--text-primary);
+  }
+
+  &__match {
+    padding: 0 1px;
+    border-radius: 2px;
+    background: var(--brand-subtle);
+    color: var(--brand-primary);
+  }
+
+  &__detail {
+    flex: 0 0 auto;
+    color: var(--text-secondary);
+  }
+
+  &__alert {
+    flex: 0 0 auto;
+    color: var(--danger);
+  }
+
+  &--done {
+    background: transparent;
+    opacity: .55;
+
+    &:hover {
+      background: var(--surface-subtle);
+    }
+  }
+
+  &--done &__title {
+    text-decoration: line-through;
+  }
+
+  &--dragging {
+    opacity: .4;
+  }
+
+  &--dimmed {
+    opacity: .18;
+    pointer-events: none;
+  }
+
+  &[data-overdue='true'] {
+    background: var(--danger-bg);
+  }
+
+  &[data-overdue='true'] &__bar {
+    background: var(--danger);
+  }
+}

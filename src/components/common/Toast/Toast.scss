@@ -1,0 +1,75 @@
+@use '@/styles/abstracts' as *;
+
+.toast-stack {
+  position: fixed;
+  right: $sp-4;
+  bottom: $sp-4;
+  z-index: $z-toast;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+  width: min(340px, calc(100vw - #{$sp-5}));
+
+  @include mobile {
+    top: $sp-3;
+    right: $sp-3;
+    left: $sp-3;
+    bottom: auto;
+    width: auto;
+  }
+}
+
+.toast {
+  @include fade-in;
+
+  display: flex;
+  align-items: flex-start;
+  gap: $sp-2;
+  padding: $sp-3;
+  background-color: $c-surface;
+  border: $border-w solid $c-border;
+  border-left: 3px solid $c-text-faint;
+  border-radius: $radius-md;
+  box-shadow: $shadow-toast;
+
+  &__message {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: $fs-base;
+    line-height: $lh-base;
+    color: $c-text;
+    word-break: break-word;
+  }
+
+  &__close {
+    @include button-reset;
+    @include flex-center;
+    @include focus-ring;
+
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: $c-text-faint;
+    border-radius: $radius-sm;
+
+    &:hover {
+      color: $c-text;
+      background-color: rgba($c-navy, .08);
+    }
+  }
+
+  &--success {
+    border-left-color: $c-done;
+    .icon { color: $c-done; }
+  }
+
+  &--error {
+    border-left-color: $c-danger;
+    .icon { color: $c-danger; }
+  }
+
+  &--info {
+    border-left-color: $c-doing;
+    .icon { color: $c-doing; }
+  }
+}

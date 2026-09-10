@@ -1,0 +1,23 @@
+@use '@/styles/abstracts' as *;
+
+.task-detail-body {
+  @include scrollbar-thin;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.detail-section {
+  padding: var(--sp-4);
+
+  & + & {
+    border-top: 1px solid var(--border-default);
+  }
+
+  &__title {
+    margin-bottom: var(--sp-1);
+    font-size: var(--fs-meta);
+    font-weight: $fw-regular;
+    color: var(--text-secondary);
+  }
+}

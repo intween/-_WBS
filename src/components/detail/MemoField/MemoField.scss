@@ -1,0 +1,72 @@
+@use '@/styles/abstracts' as *;
+
+.memo-field {
+  &__foot {
+    @include flex-between($sp-2);
+    margin-top: $sp-1;
+    min-height: 16px;
+  }
+
+  &__save {
+    font-size: $fs-sm;
+    color: $c-text-mute;
+
+    &--saved {
+      color: $c-done;
+    }
+
+    &--error {
+      color: $c-danger;
+      font-weight: $fw-medium;
+    }
+  }
+
+  &__length {
+    margin-left: auto;
+    font-size: $fs-xs;
+    color: $c-text-faint;
+  }
+
+  &__pending {
+    margin-top: $sp-2;
+    padding: $sp-2;
+    background-color: rgba($c-doing, .08);
+    border: $border-w solid rgba($c-doing, .35);
+    border-radius: $radius-sm;
+  }
+
+  &__pending-text {
+    font-size: $fs-sm;
+    line-height: $lh-base;
+    color: $c-text;
+  }
+
+  &__pending-actions {
+    display: flex;
+    gap: $sp-2;
+    margin-top: $sp-2;
+  }
+
+  &__pending-button {
+    @include button-reset;
+    @include focus-ring;
+
+    padding: 3px $sp-2;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    color: $c-surface;
+    background-color: $c-doing;
+    border-radius: $radius-sm;
+
+    &--ghost {
+      color: $c-doing;
+      background-color: transparent;
+      border: $border-w solid rgba($c-doing, .4);
+    }
+
+    @include mobile {
+      min-height: 34px;
+      padding: 0 $sp-3;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@use '@/styles/abstracts' as *;
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $sp-3;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $sp-2;
+  }
+}
+
+.summary-card {
+  @include card($sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: $sp-1;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: $sp-1;
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &__value {
+    font-size: $fs-xl;
+    font-weight: $fw-bold;
+    line-height: 1.1;
+    color: $c-navy;
+  }
+
+  &__unit {
+    margin-left: 2px;
+    font-size: $fs-base;
+    font-weight: $fw-regular;
+    color: $c-text-mute;
+  }
+
+  &__sub {
+    font-size: $fs-sm;
+    color: $c-text-faint;
+  }
+
+  &--danger &__value {
+    color: $c-danger;
+  }
+}

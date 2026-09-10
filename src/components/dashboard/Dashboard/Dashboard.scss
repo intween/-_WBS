@@ -1,0 +1,43 @@
+@use '@/styles/abstracts' as *;
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-4;
+  padding: $sp-4;
+
+  @include mobile {
+    gap: $sp-3;
+    padding: $sp-3;
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $sp-4;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $sp-3;
+    }
+  }
+
+  &__panel {
+    @include card($sp-4);
+    min-width: 0;
+
+    @include mobile {
+      padding: $sp-3;
+    }
+  }
+
+  &__title {
+    margin-bottom: $sp-2;
+    font-size: $fs-md;
+    color: $c-text;
+  }
+}

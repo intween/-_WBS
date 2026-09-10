@@ -1,0 +1,12 @@
+@use '@/styles/abstracts' as *;
+
+.overflow-menu {
+  position: relative;
+  flex: 0 0 auto;
+
+  &__entry {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+}

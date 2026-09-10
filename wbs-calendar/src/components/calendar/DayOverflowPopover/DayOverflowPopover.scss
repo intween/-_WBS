@@ -1,0 +1,30 @@
+@use '@/styles/abstracts' as *;
+
+.day-overflow {
+  @include scrollbar-thin;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: $z-popover;
+  width: max(100%, 190px);
+  max-height: 240px;
+  overflow-y: auto;
+  padding: var(--sp-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+  background: var(--surface-base);
+  box-shadow: var(--shadow-md);
+
+  &__title {
+    padding: 0 6px;
+    line-height: 20px;
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}

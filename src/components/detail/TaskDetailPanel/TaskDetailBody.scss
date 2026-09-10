@@ -1,0 +1,30 @@
+@use '@/styles/abstracts' as *;
+
+.task-detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-5;
+  padding: $sp-4;
+
+  @include mobile {
+    gap: $sp-4;
+    padding: $sp-3;
+  }
+
+  &__section {
+    min-width: 0;
+
+    &--flush {
+      padding-top: $sp-2;
+      border-top: $border-w solid $c-border;
+    }
+  }
+
+  &__label {
+    margin-bottom: $sp-2;
+    font-size: $fs-sm;
+    font-weight: $fw-bold;
+    color: $c-text-mute;
+    letter-spacing: .02em;
+  }
+}

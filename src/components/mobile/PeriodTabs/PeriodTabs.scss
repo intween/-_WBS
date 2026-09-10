@@ -1,0 +1,59 @@
+@use '@/styles/abstracts' as *;
+
+.period-tabs {
+  @include scrollbar-hidden;
+
+  display: flex;
+  gap: $sp-2;
+  padding: $sp-2 $sp-3;
+  overflow-x: auto;
+  background-color: $c-surface;
+  border-bottom: $border-w solid $c-border;
+  scroll-snap-type: x proximity;
+
+  &__tab {
+    @include button-reset;
+    @include focus-ring;
+    @include touch-target;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+    flex-shrink: 0;
+    padding: $sp-1 $sp-3;
+    color: $c-text-mute;
+    background-color: $c-panel;
+    border: $border-w solid $c-border;
+    border-radius: $radius-md;
+    scroll-snap-align: center;
+    transition: background-color $transition, color $transition, border-color $transition;
+
+    &--active {
+      color: $c-surface;
+      font-weight: $fw-bold;
+    }
+  }
+
+  &__label {
+    font-size: $fs-base;
+    white-space: nowrap;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $sp-1;
+  }
+
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: $radius-full;
+  }
+
+  &__count {
+    font-size: $fs-xs;
+  }
+}

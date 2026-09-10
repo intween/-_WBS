@@ -1,0 +1,80 @@
+@use '@/styles/abstracts' as *;
+
+.member-row {
+  display: flex;
+  align-items: center;
+  gap: $sp-3;
+  padding: $sp-2;
+  border: $border-w solid $c-border;
+  border-radius: $radius-md;
+  background-color: $c-surface;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    gap: $sp-1;
+    font-size: $fs-md;
+    font-weight: $fw-medium;
+    color: $c-text;
+  }
+
+  &__me {
+    padding: 1px 5px;
+    font-size: $fs-xs;
+    font-weight: $fw-regular;
+    color: $c-doing;
+    background-color: rgba($c-doing, .12);
+    border-radius: $radius-full;
+  }
+
+  &__role {
+    @include truncate(1);
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $sp-1;
+    flex-shrink: 0;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-1;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &__input {
+    @include input-base;
+    height: 30px;
+    padding: 0 $sp-2;
+
+    @include mobile {
+      height: 38px;
+    }
+  }
+
+  &--confirm {
+    flex-wrap: wrap;
+    border-color: rgba($c-danger, .5);
+    background-color: rgba($c-danger, .05);
+  }
+
+  &__confirm-text {
+    flex: 1 1 200px;
+    font-size: $fs-base;
+    line-height: $lh-base;
+    color: $c-text;
+  }
+}

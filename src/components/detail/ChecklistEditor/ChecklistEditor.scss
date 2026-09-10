@@ -1,0 +1,77 @@
+@use '@/styles/abstracts' as *;
+
+.checklist-editor {
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $sp-1;
+    margin-bottom: $sp-2;
+    color: $c-text-mute;
+  }
+
+  &__count {
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-1;
+    margin-bottom: $sp-2;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+
+    &--done .checklist-editor__text {
+      color: $c-text-mute;
+      text-decoration: line-through;
+    }
+  }
+
+  &__text {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: $sp-1 $sp-2;
+    font-size: $fs-base;
+    color: $c-text;
+    background-color: transparent;
+    border: $border-w solid transparent;
+    border-radius: $radius-sm;
+    transition: border-color $transition, background-color $transition;
+
+    &:hover:not(:disabled) {
+      border-color: $c-border;
+    }
+
+    &:focus {
+      background-color: $c-surface;
+      border-color: $c-doing;
+      outline: none;
+    }
+
+    @include mobile {
+      font-size: $fs-input-mobile;
+      min-height: 34px;
+    }
+  }
+
+  &__add {
+    display: flex;
+    gap: $sp-1;
+  }
+
+  &__input {
+    @include input-base;
+    height: 30px;
+    padding: 0 $sp-2;
+    flex: 1 1 auto;
+
+    @include mobile {
+      height: $touch-target;
+    }
+  }
+}

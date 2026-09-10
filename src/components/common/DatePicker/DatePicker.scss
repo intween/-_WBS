@@ -1,0 +1,72 @@
+@use '@/styles/abstracts' as *;
+
+.date-picker {
+  min-width: 0;
+
+  &__label {
+    display: block;
+    margin-bottom: $sp-1;
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &__control {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__field {
+    @include input-base;
+    @include focus-ring;
+
+    height: 34px;
+    padding-right: $sp-5;
+    font-variant-numeric: tabular-nums;
+
+    @include mobile {
+      height: $touch-target;
+    }
+
+    &:disabled {
+      background-color: $c-panel;
+      color: $c-text-mute;
+    }
+  }
+
+  &__clear {
+    @include button-reset;
+    @include flex-center;
+    @include focus-ring;
+
+    position: absolute;
+    right: $sp-1;
+    width: 22px;
+    height: 22px;
+    color: $c-text-faint;
+    border-radius: $radius-sm;
+
+    &:hover {
+      color: $c-text;
+      background-color: rgba($c-navy, .08);
+    }
+  }
+
+  &__hint {
+    margin-top: $sp-1;
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &--invalid {
+    .date-picker__field {
+      color: $c-danger;
+      border-color: rgba($c-danger, .55);
+    }
+
+    .date-picker__hint {
+      color: $c-danger;
+      font-weight: $fw-medium;
+    }
+  }
+}

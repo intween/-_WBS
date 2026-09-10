@@ -1,0 +1,38 @@
+@use '@/styles/abstracts' as *;
+
+.tab-bar {
+  display: none;
+
+  @include mobile {
+    @include safe-area-bottom(0px);
+
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $z-tabbar;
+    display: flex;
+    background-color: $c-surface;
+    border-top: $border-w solid $c-border;
+  }
+
+  &__item {
+    @include button-reset;
+    @include flex-center(column, 2px);
+    @include focus-ring($c-doing, -2px);
+
+    flex: 1 1 0;
+    min-height: $tabbar-height;
+    color: $c-text-faint;
+    transition: color $transition;
+
+    &--active {
+      color: $c-navy;
+    }
+  }
+
+  &__label {
+    font-size: $fs-xs;
+    font-weight: $fw-medium;
+  }
+}

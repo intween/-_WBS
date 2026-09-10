@@ -1,0 +1,64 @@
+@use '@/styles/abstracts' as *;
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-2;
+  cursor: pointer;
+  user-select: none;
+
+  &--disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  &__input {
+    @include visually-hidden;
+  }
+
+  &__box {
+    @include flex-center;
+    flex-shrink: 0;
+    color: $c-surface;
+    background-color: $c-surface;
+    border: $border-w solid $c-border;
+    border-radius: $radius-sm;
+    transition: background-color $transition, border-color $transition;
+  }
+
+  &--md &__box {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--sm &__box {
+    width: 14px;
+    height: 14px;
+  }
+
+  &--checked &__box {
+    background-color: $c-done;
+    border-color: $c-done;
+  }
+
+  // 키보드 포커스는 상자에 링을 그린다.
+  &__input:focus-visible + &__box {
+    outline: 2px solid $c-doing;
+    outline-offset: 2px;
+  }
+
+  &__label {
+    font-size: $fs-base;
+    line-height: $lh-tight;
+    color: $c-text;
+  }
+
+  // 모바일 터치 영역 확보
+  @include mobile {
+    min-height: $touch-target;
+
+    &__label {
+      font-size: $fs-md;
+    }
+  }
+}

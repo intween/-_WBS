@@ -1,0 +1,149 @@
+// ---------------------------------------------
+// 디자인 토큰
+// 색상 / 폰트크기 / 간격 / 반경 / 그림자 / 레이어 / 레이아웃 치수
+// JS 에서 참조가 필요한 값은 src/constants/ 와 반드시 일치시킨다.
+// ---------------------------------------------
+
+// --- Base ---
+$c-bg:         #E8E6E2;
+$c-surface:    #FFFFFF;
+$c-panel:      #F5F3EF;
+$c-panel-alt:  #EEEDE9;   // 빈 셀
+$c-border:     #D5D0C8;
+$c-text:       #1A1A18;
+$c-text-mute:  #888888;
+$c-text-faint: #AAAAAA;
+
+// --- Brand / Status ---
+$c-navy:   #1F3B5A;
+$c-todo:   #9A958C;
+$c-doing:  #2E6DA4;
+$c-done:   #1A6B5A;
+$c-hold:   #993C1D;
+$c-danger: #B5341F;   // 지연
+
+// --- Stream ---
+$c-stream-a: #185FA5;
+$c-stream-b: #085041;
+$c-stream-c: #854F0B;
+$c-stream-d: #534AB7;
+$c-stream-e: #27500A;
+$c-stream-f: #993C1D;
+$c-stream-g: #1F3B5A;
+
+// --- Period ---
+$c-period-w1: #185FA5;
+$c-period-w2: #085041;
+$c-period-w3: #854F0B;
+$c-period-w4: #534AB7;
+$c-period-w5: #27500A;
+$c-period-w6: #993C1D;
+$c-period-w7: #791F1F;
+$c-period-w8: #0C447C;
+$c-period-wf: #1F3B5A;
+
+// --- 색상 맵 (functions 의 조회 대상) ---
+$stream-colors: (
+  'a': $c-stream-a,
+  'b': $c-stream-b,
+  'c': $c-stream-c,
+  'd': $c-stream-d,
+  'e': $c-stream-e,
+  'f': $c-stream-f,
+  'g': $c-stream-g,
+);
+
+$period-colors: (
+  'w1': $c-period-w1,
+  'w2': $c-period-w2,
+  'w3': $c-period-w3,
+  'w4': $c-period-w4,
+  'w5': $c-period-w5,
+  'w6': $c-period-w6,
+  'w7': $c-period-w7,
+  'w8': $c-period-w8,
+  'wf': $c-period-wf,
+);
+
+// 상태 4종 (src/constants/status.js 와 값 일치)
+$status-colors: (
+  'todo':  $c-todo,
+  'doing': $c-doing,
+  'done':  $c-done,
+  'hold':  $c-hold,
+);
+
+// --- Typography ---
+$ff-base: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+  'Malgun Gothic', 'Segoe UI', Roboto, sans-serif;
+$ff-mono: 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+
+$fs-xs:   10px;
+$fs-sm:   11px;
+$fs-base: 13px;
+$fs-md:   14px;
+$fs-lg:   16px;
+$fs-xl:   20px;
+
+$fw-regular: 400;
+$fw-medium:  500;
+$fw-bold:    700;
+
+$lh-tight: 1.25;
+$lh-base:  1.5;
+
+// iOS 자동 확대 방지용 최소 입력 폰트 크기
+$fs-input-mobile: 16px;
+
+// --- Spacing (4px 스케일) ---
+$sp-1: 4px;
+$sp-2: 8px;
+$sp-3: 12px;
+$sp-4: 16px;
+$sp-5: 24px;
+$sp-6: 32px;
+
+// --- Radius / Shadow / Motion ---
+$radius-sm: 4px;
+$radius-md: 6px;
+$radius-lg: 10px;
+$radius-full: 999px;
+
+$shadow-card:  0 1px 2px rgba(0, 0, 0, .05);
+$shadow-panel: -4px 0 24px rgba(0, 0, 0, .12);
+$shadow-sheet: 0 -4px 24px rgba(0, 0, 0, .16);   // 모바일 하단 시트
+$shadow-modal: 0 12px 40px rgba(0, 0, 0, .24);
+$shadow-toast: 0 4px 16px rgba(0, 0, 0, .18);
+
+$transition: .2s ease;
+$transition-panel: .28s cubic-bezier(.32, .72, 0, 1);
+$highlight-duration: 1.5s;   // 외부 변경 깜빡임 (config.js HIGHLIGHT_DURATION_MS 와 일치)
+
+// --- Layer ---
+$z-header: 100;
+$z-sticky-col: 50;
+$z-panel: 200;
+$z-modal: 300;
+$z-toast: 400;
+
+// 보드 내부 세부 레이어 (헤더 100 아래에서 겹침 순서만 정리)
+$z-cell: 1;
+$z-sticky-row: 60;     // 기간 헤더 행
+$z-sticky-cross: 70;   // 좌상단 교차 지점
+$z-toolbar: 90;
+$z-tabbar: 95;         // 모바일 하단 탭바
+
+// --- Layout ---
+$panel-width: 420px;
+$col-width: 160px;
+$label-width: 120px;
+
+$header-height: 64px;
+$tabbar-height: 56px;    // 모바일 하단 탭바
+$touch-target: 44px;     // 모바일 최소 터치 영역
+$avatar-sm: 20px;
+$avatar-md: 28px;
+$avatar-lg: 36px;
+
+$border-w: 1px;
+$accent-border-w: 2px;   // 스트림 색상 보더

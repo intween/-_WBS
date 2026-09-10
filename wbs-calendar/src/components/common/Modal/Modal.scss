@@ -1,0 +1,39 @@
+@use '@/styles/abstracts' as *;
+
+.modal {
+  @include flex-center;
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  padding: var(--sp-4);
+  background: var(--overlay-scrim);
+
+  &__dialog {
+    width: 100%;
+    max-width: 320px;
+    padding: var(--sp-4);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-panel);
+    background: var(--surface-base);
+    box-shadow: var(--shadow-md);
+  }
+
+  &__title {
+    font-size: var(--fs-card-title);
+    font-weight: $fw-medium;
+  }
+
+  &__description {
+    margin-top: var(--sp-2);
+    font-size: var(--fs-secondary);
+    color: var(--text-secondary);
+    line-height: var(--lh-body);
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--sp-2);
+    margin-top: var(--sp-4);
+  }
+}

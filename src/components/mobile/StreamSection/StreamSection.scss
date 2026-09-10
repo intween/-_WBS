@@ -1,0 +1,45 @@
+@use '@/styles/abstracts' as *;
+
+.stream-section {
+  padding-left: $sp-2;
+  border-left: $accent-border-w solid transparent;
+
+  &__head {
+    @include button-reset;
+    @include focus-ring;
+    @include touch-target;
+
+    display: flex;
+    align-items: center;
+    gap: $sp-2;
+    width: 100%;
+    padding: $sp-2 0;
+    color: $c-text-mute;
+
+    &:hover {
+      color: $c-text;
+    }
+  }
+
+  &__name {
+    font-size: $fs-md;
+    font-weight: $fw-bold;
+    color: $c-text;
+  }
+
+  &__count {
+    margin-left: auto;
+    padding: 1px $sp-2;
+    font-size: $fs-sm;
+    color: $c-text-mute;
+    background-color: rgba($c-navy, .08);
+    border-radius: $radius-full;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-2;
+    padding-bottom: $sp-3;
+  }
+}

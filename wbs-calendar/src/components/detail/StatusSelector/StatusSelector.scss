@@ -1,0 +1,43 @@
+@use '@/styles/abstracts' as *;
+
+.status-selector {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  padding: 1px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-control);
+
+  &__option {
+    @include status-tokens;
+    @include focus-ring;
+    --status-ink: var(--text-tertiary);
+    height: 24px;
+    border-radius: var(--radius-chip);
+    font-size: var(--fs-secondary);
+    color: var(--text-secondary);
+    transition: background $transition, color $transition;
+
+    &:hover {
+      background: var(--surface-subtle);
+      color: var(--text-primary);
+    }
+
+    &--active {
+      background: var(--status-bg);
+      color: var(--status-ink);
+      font-weight: $fw-medium;
+    }
+
+    &--active:hover {
+      background: var(--status-bg);
+      color: var(--status-ink);
+    }
+  }
+
+  @include mobile {
+    &__option {
+      min-height: 34px;
+    }
+  }
+}

@@ -1,0 +1,178 @@
+@use 'variables' as *;
+@use 'breakpoints' as *;
+
+@mixin mobile {
+  @media (max-width: #{$bp-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$bp-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$bp-mobile + 1px}) {
+    @content;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@mixin scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: var(--radius-pill);
+  }
+}
+
+@mixin focus-ring {
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--surface-base), 0 0 0 4px var(--brand-primary);
+  }
+}
+
+@mixin card {
+  background: var(--surface-base);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+}
+
+@mixin drop-target {
+  background: var(--calendar-drop-bg);
+  box-shadow: inset 0 0 0 2px var(--calendar-drop-ring);
+  transition: none;
+}
+
+@mixin control {
+  height: var(--h-control);
+  padding: 0 10px;
+  font-size: var(--fs-control);
+  border-radius: var(--radius-control);
+}
+
+@mixin hairline-bottom {
+  border-bottom: 1px solid var(--border-default);
+}
+
+@mixin slide-in-right {
+  animation: slide-in-right $transition;
+
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(16px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin slide-up {
+  animation: slide-up $transition;
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(24px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin stream-tokens {
+  @each $id in a, b, c, d, e, f, g {
+    &[data-stream='#{$id}'] {
+      --stream-ink: var(--stream-#{$id}-ink);
+      --stream-bg: var(--stream-#{$id}-bg);
+      --stream-border: var(--stream-#{$id}-border);
+    }
+  }
+}
+
+@mixin status-tokens {
+  &[data-status='todo'] {
+    --status-ink: var(--text-tertiary);
+    --status-bg: var(--surface-subtle);
+    --status-border: var(--border-default);
+  }
+
+  &[data-status='doing'] {
+    --status-ink: var(--info);
+    --status-bg: var(--info-bg);
+    --status-border: var(--info-border);
+  }
+
+  &[data-status='done'] {
+    --status-ink: var(--success);
+    --status-bg: var(--success-bg);
+    --status-border: var(--success-border);
+  }
+
+  &[data-status='hold'] {
+    --status-ink: var(--warning);
+    --status-bg: var(--warning-bg);
+    --status-border: var(--warning-border);
+  }
+
+  &[data-overdue='true'] {
+    --status-ink: var(--danger);
+    --status-bg: var(--danger-bg);
+    --status-border: var(--danger-border);
+  }
+}

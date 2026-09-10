@@ -1,0 +1,62 @@
+@use '@/styles/abstracts' as *;
+
+.swimlane-board {
+  @include scrollbar-thin;
+
+  flex: 1 1 auto;
+  min-height: 0;
+  // 가로/세로 스크롤은 이 컨테이너 안에서만 일어난다.
+  overflow: auto;
+  background-color: $c-panel;
+  border: $border-w solid $c-border;
+  border-radius: $radius-md;
+
+  &--empty {
+    @include flex-center;
+    overflow: hidden;
+  }
+
+  &__reset {
+    @include button-reset;
+    @include focus-ring;
+    padding: $sp-1 $sp-3;
+    font-size: $fs-base;
+    color: $c-doing;
+    border: $border-w solid $c-doing;
+    border-radius: $radius-sm;
+
+    &:hover {
+      color: $c-surface;
+      background-color: $c-doing;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    // 첫 열은 고정 라벨, 나머지는 기간 수만큼 (--period-count 는 JS 에서 주입)
+    grid-template-columns: $label-width repeat(var(--period-count), $col-width);
+    min-width: min-content;
+  }
+
+  // role="row" 를 살리면서 그리드 배치는 그대로 두기 위해 display: contents 사용
+  &__head,
+  &__row {
+    display: contents;
+  }
+
+  // 좌상단 교차 지점 — 두 방향 모두 고정되므로 가장 위 레이어
+  &__corner {
+    @include sticky-cell($z-sticky-cross);
+    @include flex-center;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    padding: $sp-2;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    color: $c-surface;
+    background-color: $c-navy;
+    border-right: $border-w solid $c-border;
+  }
+}

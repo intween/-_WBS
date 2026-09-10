@@ -1,0 +1,58 @@
+@use '@/styles/abstracts' as *;
+
+.toast-stack {
+  position: fixed;
+  right: var(--sp-3);
+  bottom: var(--sp-3);
+  z-index: $z-toast;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+
+  @include mobile {
+    right: var(--sp-3);
+    left: var(--sp-3);
+    bottom: calc(#{$mobile-tabbar-height} + var(--sp-2));
+  }
+}
+
+.toast {
+  @include flex-between;
+  @include slide-up;
+  gap: var(--sp-3);
+  min-width: 180px;
+  max-width: 300px;
+  padding: 6px 6px 6px 10px;
+  border-radius: var(--radius-control);
+  background: var(--danger);
+  color: var(--on-solid);
+  font-size: var(--fs-secondary);
+  box-shadow: var(--shadow-md);
+
+  &__message {
+    line-height: var(--lh-tight);
+  }
+
+  &__close {
+    @include flex-center;
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    border-radius: var(--radius-chip);
+    opacity: .8;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      outline: none;
+      opacity: 1;
+      box-shadow: 0 0 0 2px var(--danger), 0 0 0 4px var(--on-solid);
+    }
+  }
+
+  @include mobile {
+    max-width: none;
+  }
+}

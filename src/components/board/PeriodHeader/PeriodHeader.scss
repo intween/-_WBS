@@ -1,0 +1,50 @@
+@use '@/styles/abstracts' as *;
+
+.period-header {
+  @include sticky-row($z-sticky-row);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: $sp-2;
+  color: $c-surface;
+  border-right: $border-w solid rgba($c-surface, .25);
+
+  &__label {
+    @include truncate(1);
+    font-size: $fs-base;
+    font-weight: $fw-bold;
+  }
+
+  &__range {
+    @include truncate(1);
+    font-size: $fs-xs;
+    color: rgba($c-surface, .8);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__progress {
+    margin-top: $sp-1;
+  }
+
+  &__track {
+    height: 3px;
+    overflow: hidden;
+    background-color: rgba($c-surface, .28);
+    border-radius: $radius-full;
+  }
+
+  &__fill {
+    height: 100%;
+    background-color: $c-surface;
+    border-radius: $radius-full;
+    transition: width $transition;
+  }
+
+  &__value {
+    display: block;
+    margin-top: 2px;
+    font-size: $fs-xs;
+    color: rgba($c-surface, .85);
+  }
+}

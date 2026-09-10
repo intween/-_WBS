@@ -1,0 +1,58 @@
+@use '@/styles/abstracts' as *;
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  cursor: pointer;
+
+  &__input {
+    @include visually-hidden;
+  }
+
+  &__box {
+    @include flex-center;
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-chip);
+    background: var(--surface-base);
+    color: transparent;
+    transition: background $transition, border-color $transition, color $transition;
+
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &__label {
+    font-size: var(--fs-secondary);
+    word-break: break-word;
+  }
+
+  &--checked &__box {
+    background: var(--success);
+    border-color: var(--success);
+    color: var(--on-solid);
+  }
+
+  &--checked &__label {
+    color: var(--text-tertiary);
+    text-decoration: line-through;
+  }
+
+  &__input:focus-visible + &__box {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--surface-base), 0 0 0 4px var(--brand-primary);
+  }
+
+  &__input:disabled + &__box {
+    opacity: .5;
+  }
+
+  @include mobile {
+    min-height: 34px;
+  }
+}

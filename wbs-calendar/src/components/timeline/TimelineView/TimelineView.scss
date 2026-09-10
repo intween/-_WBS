@@ -1,0 +1,44 @@
+@use '@/styles/abstracts' as *;
+
+.timeline-view {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--sp-3) 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: var(--side-width) repeat(var(--week-count), minmax(110px, 1fr));
+    min-width: 100%;
+    border-top: 1px solid var(--border-default);
+    border-left: 1px solid var(--border-default);
+  }
+
+  &__corner {
+    background: var(--surface-subtle);
+    border-right: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  &__head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-2);
+    padding: 0 var(--sp-2);
+    height: var(--h-group-header);
+    background: var(--surface-subtle);
+    border-right: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  &__week {
+    font-size: var(--fs-meta);
+    font-weight: $fw-medium;
+    color: var(--text-secondary);
+  }
+
+  &__range {
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,60 @@
+@use '@/styles/abstracts' as *;
+
+.progress-bar {
+  width: 100%;
+  min-width: 0;
+
+  &__head {
+    @include flex-between($sp-2);
+    margin-bottom: $sp-1;
+  }
+
+  &__label {
+    @include truncate(1);
+    font-size: $fs-sm;
+    color: $c-text-mute;
+  }
+
+  &__value {
+    display: inline-flex;
+    align-items: baseline;
+    gap: $sp-1;
+    flex-shrink: 0;
+    font-size: $fs-sm;
+  }
+
+  &__count {
+    color: $c-text-mute;
+  }
+
+  &__percent {
+    font-weight: $fw-bold;
+    color: $c-text;
+  }
+
+  &__track {
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba($c-navy, .1);
+    border-radius: $radius-full;
+  }
+
+  &__fill {
+    height: 100%;
+    border-radius: $radius-full;
+    background-color: $c-doing;
+    transition: width $transition, background-color $transition;
+  }
+
+  // --- 높이 ---
+  &--xs &__track { height: 3px; }
+  &--sm &__track { height: 5px; }
+  &--md &__track { height: 8px; }
+
+  // --- 진행 구간별 색상 ---
+  &--none &__fill { background-color: transparent; }
+  &--low &__fill { background-color: $c-todo; }
+  &--mid &__fill { background-color: $c-doing; }
+  &--high &__fill { background-color: $c-doing; }
+  &--complete &__fill { background-color: $c-done; }
+}

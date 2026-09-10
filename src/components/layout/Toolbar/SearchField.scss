@@ -1,0 +1,57 @@
+@use '@/styles/abstracts' as *;
+
+.search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 220px;
+  max-width: 320px;
+  min-width: 0;
+
+  @include mobile {
+    max-width: none;
+  }
+
+  &__icon {
+    position: absolute;
+    left: $sp-2;
+    color: $c-text-faint;
+    pointer-events: none;
+  }
+
+  &__input {
+    @include input-base;
+    @include focus-ring;
+
+    height: 30px;
+    padding-left: $sp-5;
+    padding-right: $sp-5;
+
+    @include mobile {
+      height: $touch-target;
+    }
+
+    // 브라우저 기본 x 버튼 제거 (직접 만든 버튼을 쓴다)
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+  }
+
+  &__clear {
+    @include button-reset;
+    @include flex-center;
+    @include focus-ring;
+
+    position: absolute;
+    right: $sp-1;
+    width: 22px;
+    height: 22px;
+    color: $c-text-faint;
+    border-radius: $radius-sm;
+
+    &:hover {
+      color: $c-text;
+      background-color: rgba($c-navy, .08);
+    }
+  }
+}

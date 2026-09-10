@@ -1,0 +1,46 @@
+@use '@/styles/abstracts' as *;
+
+.status-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $sp-1;
+
+  &__item {
+    @include button-reset;
+    @include flex-center(row, $sp-1);
+    @include focus-ring;
+
+    height: 32px;
+    font-size: $fs-base;
+    color: $c-text-mute;
+    background-color: $c-surface;
+    border: $border-w solid $c-border;
+    border-radius: $radius-sm;
+    transition: background-color $transition, color $transition, border-color $transition;
+
+    &:hover:not(:disabled) {
+      color: $c-text;
+      border-color: $c-text-faint;
+    }
+
+    &--active {
+      color: $c-surface;
+      font-weight: $fw-medium;
+
+      &:hover {
+        color: $c-surface;
+      }
+    }
+
+    @include mobile {
+      height: $touch-target;
+      font-size: $fs-md;
+    }
+  }
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: $radius-full;
+  }
+}

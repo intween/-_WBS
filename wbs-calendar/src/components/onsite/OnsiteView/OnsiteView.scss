@@ -1,0 +1,45 @@
+@use '@/styles/abstracts' as *;
+
+.onsite-view {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--sp-3) 0;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-2);
+    height: var(--h-group-header);
+  }
+
+  &__title {
+    font-size: var(--fs-section-title);
+    font-weight: $fw-medium;
+    color: var(--text-secondary);
+  }
+
+  &__range {
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: repeat(var(--day-count), minmax(0, 1fr));
+    align-items: start;
+    border-top: 1px solid var(--border-default);
+    border-left: 1px solid var(--border-default);
+  }
+
+  @include tablet {
+    &__columns {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @include mobile {
+    &__columns {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}

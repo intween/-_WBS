@@ -1,0 +1,107 @@
+@use '@/styles/abstracts' as *;
+
+.button {
+  @include button-reset;
+  @include flex-center(row, $sp-1);
+  @include focus-ring;
+
+  border: $border-w solid transparent;
+  border-radius: $radius-sm;
+  font-size: $fs-base;
+  font-weight: $fw-medium;
+  white-space: nowrap;
+  transition: background-color $transition, border-color $transition, color $transition,
+    opacity $transition;
+
+  &:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+  }
+
+  // --- 크기 ---
+  &--md {
+    height: 32px;
+    padding: 0 $sp-3;
+  }
+
+  &--sm {
+    height: 26px;
+    padding: 0 $sp-2;
+    font-size: $fs-sm;
+  }
+
+  &--icon-only {
+    padding: 0;
+    aspect-ratio: 1;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  // --- 색상 ---
+  &--primary {
+    color: $c-surface;
+    background-color: $c-navy;
+
+    &:hover:not(:disabled) {
+      background-color: shade($c-navy, 12%);
+    }
+  }
+
+  &--secondary {
+    color: $c-text;
+    background-color: $c-surface;
+    border-color: $c-border;
+
+    &:hover:not(:disabled) {
+      background-color: $c-panel;
+    }
+  }
+
+  &--ghost {
+    color: $c-text-mute;
+    background-color: transparent;
+
+    &:hover:not(:disabled) {
+      color: $c-text;
+      background-color: rgba($c-navy, .07);
+    }
+  }
+
+  &--danger {
+    color: $c-danger;
+    background-color: $c-surface;
+    border-color: rgba($c-danger, .4);
+
+    &:hover:not(:disabled) {
+      color: $c-surface;
+      background-color: $c-danger;
+      border-color: $c-danger;
+    }
+  }
+
+  // --- 토글 선택 상태 ---
+  &--active {
+    color: $c-surface;
+    background-color: $c-doing;
+    border-color: $c-doing;
+
+    &:hover:not(:disabled) {
+      background-color: shade($c-doing, 10%);
+    }
+  }
+
+  // 모바일에서는 터치 영역을 넉넉히
+  @include mobile {
+    &--md {
+      height: $touch-target;
+      padding: 0 $sp-4;
+      font-size: $fs-md;
+    }
+
+    &--sm {
+      height: 34px;
+    }
+  }
+}

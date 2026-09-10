@@ -1,0 +1,35 @@
+@use '@/styles/abstracts' as *;
+
+.filter-popover {
+  position: relative;
+  flex: 0 0 auto;
+
+  &__count {
+    @include flex-center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: var(--radius-pill);
+    background: var(--brand-primary);
+    color: var(--on-solid);
+    font-size: var(--fs-meta);
+  }
+
+  &__stream {
+    @include stream-tokens;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: var(--radius-pill);
+    background: var(--stream-ink);
+  }
+
+  .popover__item[data-stream] {
+    padding-left: 6px;
+  }
+}

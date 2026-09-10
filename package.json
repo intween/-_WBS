@@ -1,0 +1,22 @@
+{
+  "name": "wbs-donghae",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "환동해 소셜벤처 글로벌 진출 프로그램 WBS 협업 관리 플랫폼",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "sass": "^1.83.0",
+    "vite": "^6.0.7"
+  }
+}

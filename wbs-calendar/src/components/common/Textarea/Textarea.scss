@@ -1,0 +1,24 @@
+@use '@/styles/abstracts' as *;
+
+.textarea {
+  @include focus-ring;
+  width: 100%;
+  min-height: 60px;
+  padding: 6px 8px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-control);
+  background: var(--surface-base);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  resize: none;
+  overflow: hidden;
+
+  &::placeholder {
+    color: var(--text-tertiary);
+  }
+
+  @include mobile {
+    font-size: var(--fs-card-title);
+  }
+}

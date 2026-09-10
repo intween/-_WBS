@@ -1,0 +1,68 @@
+@use '@/styles/abstracts' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-1;
+  border-radius: $radius-full;
+  font-weight: $fw-medium;
+  line-height: 1;
+  white-space: nowrap;
+
+  &--md {
+    padding: 3px $sp-2;
+    font-size: $fs-sm;
+  }
+
+  &--sm {
+    padding: 2px 6px;
+    font-size: $fs-xs;
+  }
+
+  // --- 상태별 ---
+  @each $key, $color in $status-colors {
+    &--status-#{$key} {
+      color: $color;
+      background-color: rgba($color, .12);
+    }
+  }
+
+  // --- 일반 톤 ---
+  &--neutral {
+    color: $c-text-mute;
+    background-color: rgba($c-navy, .07);
+  }
+
+  &--info {
+    color: $c-doing;
+    background-color: rgba($c-doing, .12);
+  }
+
+  &--done {
+    color: $c-done;
+    background-color: rgba($c-done, .12);
+  }
+
+  &--danger {
+    color: $c-danger;
+    background-color: rgba($c-danger, .12);
+  }
+
+  // --- 점 표시 ---
+  &--dot {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border-radius: $radius-full;
+
+    @each $key, $color in $status-colors {
+      &.badge--status-#{$key} {
+        background-color: $color;
+      }
+    }
+
+    &.badge--danger {
+      background-color: $c-danger;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@use '@/styles/abstracts' as *;
+
+.shortcuts {
+  @include flex-center;
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  padding: var(--sp-4);
+  background: var(--overlay-scrim);
+
+  &__dialog {
+    width: 100%;
+    max-width: 340px;
+    background: var(--surface-base);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-md);
+  }
+
+  &__head {
+    @include flex-between;
+    @include hairline-bottom;
+    height: var(--h-group-header);
+    padding: 0 var(--sp-3);
+  }
+
+  &__title {
+    font-size: var(--fs-body);
+    font-weight: $fw-medium;
+  }
+
+  &__close {
+    @include flex-center;
+    @include focus-ring;
+    width: 22px;
+    height: 22px;
+    border-radius: var(--radius-control);
+    color: var(--text-secondary);
+
+    &:hover {
+      background: var(--surface-subtle);
+      color: var(--text-primary);
+    }
+  }
+
+  &__list {
+    padding: var(--sp-1) 0;
+  }
+
+  &__row {
+    @include flex-between;
+    gap: var(--sp-4);
+    height: var(--h-side-item);
+    padding: 0 var(--sp-3);
+  }
+
+  &__label {
+    font-size: var(--fs-secondary);
+    color: var(--text-secondary);
+  }
+
+  &__keys {
+    display: flex;
+    gap: var(--sp-1);
+  }
+
+  &__key {
+    @include flex-center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-chip);
+    background: var(--surface-subtle);
+    font-family: var(--font-sans);
+    font-size: var(--fs-meta);
+    color: var(--text-primary);
+  }
+}

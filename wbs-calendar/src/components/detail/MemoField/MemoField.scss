@@ -1,0 +1,11 @@
+@use '@/styles/abstracts' as *;
+
+.memo-field {
+  &__state {
+    min-height: 14px;
+    margin-top: var(--sp-1);
+    text-align: right;
+    font-size: var(--fs-meta);
+    color: var(--text-secondary);
+  }
+}
