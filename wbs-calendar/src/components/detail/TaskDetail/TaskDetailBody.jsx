@@ -1,8 +1,10 @@
+import AssigneeField from '@/components/detail/AssigneeField/AssigneeField';
 import ChecklistEditor from '@/components/detail/ChecklistEditor/ChecklistEditor';
 import DueDateField from '@/components/detail/DueDateField/DueDateField';
 import LinkList from '@/components/detail/LinkList/LinkList';
 import MemoField from '@/components/detail/MemoField/MemoField';
 import StatusSelector from '@/components/detail/StatusSelector/StatusSelector';
+import StreamField from '@/components/detail/StreamField/StreamField';
 import './TaskDetailBody.scss';
 
 const Section = ({ title, children }) => (
@@ -16,6 +18,14 @@ const TaskDetailBody = ({ task }) => (
   <div className="task-detail-body">
     <Section title="상태">
       <StatusSelector task={task} />
+    </Section>
+
+    <Section title="담당자">
+      <AssigneeField task={task} />
+    </Section>
+
+    <Section title="워크스트림">
+      <StreamField task={task} />
     </Section>
 
     <Section title="마감일">

@@ -1,0 +1,28 @@
+@use '@/styles/abstracts' as *;
+
+.assignee-field {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+
+  &__input {
+    flex: 1;
+    height: 32px;
+    padding: 0 var(--sp-2);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-control);
+    background: var(--surface-base);
+    color: var(--text-primary);
+    font-size: var(--fs-body);
+  }
+
+  &__clear {
+    flex-shrink: 0;
+    font-size: var(--fs-secondary);
+    color: var(--text-secondary);
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+}

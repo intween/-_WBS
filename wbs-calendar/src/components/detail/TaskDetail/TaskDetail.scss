@@ -51,7 +51,22 @@
     word-break: keep-all;
   }
 
-  &__close {
+  // 제목을 누르면 같은 자리에서 입력란으로 바뀐다. 글자가 튀지 않게 크기를 맞춘다.
+  &__input {
+    width: 100%;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid var(--border-strong);
+    background: transparent;
+    color: var(--text-primary);
+    font-size: var(--fs-card-title);
+    font-weight: $fw-medium;
+    line-height: var(--lh-tight);
+    font-family: inherit;
+  }
+
+  &__close,
+  &__action {
     @include flex-center;
     @include focus-ring;
     flex: 0 0 auto;
@@ -66,8 +81,13 @@
     }
   }
 
+  &__action:hover {
+    color: var(--status-danger, var(--text-primary));
+  }
+
   @include mobile {
-    &__close {
+    &__close,
+    &__action {
       width: 32px;
       height: 32px;
     }

@@ -1,20 +1,30 @@
-import { Modal } from '@/components/common';
+import { useState } from 'react';
+import { Button, Icon, Modal } from '@/components/common';
 import { useTaskActions, useUi, useUiActions } from '@/context/hooks';
 import FilterPopover from './FilterPopover';
 import OverflowMenu from './OverflowMenu';
 import SearchField from './SearchField';
+import TaskFormModal from './TaskFormModal';
 import './Toolbar.scss';
 
 const RESET_CONFIRM = 'reset';
 
 const Toolbar = () => {
   const { confirm } = useUi();
-  const { closeConfirm } = useUiActions();
-  const { resetAll } = useTaskActions();
+  const { closeConfirm, selectTask } = useUiActions();
+  const { resetAll, createTask } = useTaskActions();
+  const [isAdding, setIsAdding] = useState(false);
 
   const handleReset = () => {
     closeConfirm();
     resetAll();
+  };
+
+  const handleCreate = async (draft) => {
+    const created = await createTask(draft);
+    // 추가하자마자 상세를 열어 바로 이어서 입력할 수 있게 한다.
+    if (created) selectTask(created.id);
+    return created;
   };
 
   return (
@@ -24,9 +34,17 @@ const Toolbar = () => {
       </div>
 
       <div className="toolbar__actions">
+        <Button variant="outline" onClick={() => setIsAdding(true)}>
+          <span className="toolbar__add">
+            <Icon name="plus" size={14} />
+            업무 추가
+          </span>
+        </Button>
         <FilterPopover />
         <OverflowMenu />
       </div>
+
+      <TaskFormModal isOpen={isAdding} onSubmit={handleCreate} onClose={() => setIsAdding(false)} />
 
       <Modal
         isOpen={confirm === RESET_CONFIRM}

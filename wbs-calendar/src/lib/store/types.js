@@ -3,7 +3,45 @@ import { isValidISO } from '@/utils/date';
 
 export const STORE_MODES = { local: 'local', http: 'http', supabase: 'supabase' };
 
-export const STORE_METHODS = ['loadAll', 'update', 'reset', 'subscribe'];
+export const STORE_METHODS = [
+  'loadAll',
+  'update',
+  'reset',
+  'subscribe',
+  'loadTasks',
+  'createTaskDef',
+  'updateTaskDef',
+  'deleteTaskDef',
+];
+
+/** 업무 정의. 예전에는 config/tasks.js 에 고정돼 있었고 지금은 저장소에서 온다. */
+export const TASK_DEF_SHAPE = {
+  id: 'string',
+  stream: 'string',
+  title: 'string',
+  due: 'YYYY-MM-DD | null',
+  sortOrder: 'number',
+};
+
+export const TASK_DEF_PATCHABLE = ['stream', 'title', 'due', 'sortOrder'];
+
+export const normalizeTaskDef = (raw) => ({
+  id: String(raw.id),
+  stream: String(raw.stream ?? ''),
+  title: String(raw.title ?? ''),
+  due: isValidISO(raw.due) ? raw.due : null,
+  sortOrder: Number.isFinite(Number(raw.sortOrder)) ? Number(raw.sortOrder) : 0,
+});
+
+export const applyTaskDefPatch = (definition, patch) =>
+  normalizeTaskDef({
+    ...definition,
+    ...TASK_DEF_PATCHABLE.reduce((acc, field) => {
+      if (field in patch) acc[field] = patch[field];
+      return acc;
+    }, {}),
+    id: definition.id,
+  });
 
 export const TASK_STATE_SHAPE = {
   taskId: 'string',

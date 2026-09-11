@@ -1,10 +1,13 @@
-import { normalizeTaskState } from './types';
+import { normalizeTaskDef, normalizeTaskState } from './types';
 
 const RESOURCE = '/task-states';
+const TASK_RESOURCE = '/tasks';
 
 const resolveBaseUrl = () => (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/$/, '');
 
 const buildUrl = (path = '') => `${resolveBaseUrl()}${RESOURCE}${path}`;
+
+const buildTaskUrl = (path = '') => `${resolveBaseUrl()}${TASK_RESOURCE}${path}`;
 
 const request = async (url, options = {}) => {
   const response = await fetch(url, {
@@ -38,6 +41,31 @@ export const createHttpAdapter = () => {
     await request(buildUrl('/reset'), { method: 'POST' });
   };
 
+  const loadTasks = async () => {
+    const payload = await request(buildTaskUrl());
+    return (payload?.items ?? []).map(normalizeTaskDef);
+  };
+
+  const createTaskDef = async (draft) => {
+    const payload = await request(buildTaskUrl(), {
+      method: 'POST',
+      body: JSON.stringify(draft),
+    });
+    return normalizeTaskDef(payload);
+  };
+
+  const updateTaskDef = async (taskId, patch) => {
+    const payload = await request(buildTaskUrl(`/${encodeURIComponent(taskId)}`), {
+      method: 'PATCH',
+      body: JSON.stringify(patch),
+    });
+    return normalizeTaskDef(payload);
+  };
+
+  const deleteTaskDef = async (taskId) => {
+    await request(buildTaskUrl(`/${encodeURIComponent(taskId)}`), { method: 'DELETE' });
+  };
+
   const subscribe = (listener) => {
     listeners.add(listener);
     return () => {
@@ -45,5 +73,5 @@ export const createHttpAdapter = () => {
     };
   };
 
-  return { loadAll, update, reset, subscribe };
+  return { loadAll, update, reset, subscribe, loadTasks, createTaskDef, updateTaskDef, deleteTaskDef };
 };
