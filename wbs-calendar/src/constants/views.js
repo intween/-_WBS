@@ -16,6 +16,8 @@ export const WEEKDAY_LABELS = ['월', '화', '수', '목', '금', '토', '일'];
 
 export const MOBILE_BREAKPOINT = 768;
 
+export const MOBILE_LANDSCAPE_HEIGHT = 500;
+
 export const MAX_CHIPS_PER_DAY = 4;
 
 export const MEMO_SAVE_DELAY = 800;

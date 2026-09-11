@@ -26,8 +26,48 @@
     color: var(--text-primary);
   }
 
+  @include tablet {
+    display: none;
+
+    &--list {
+      @include slide-in-right;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: $z-panel;
+      display: block;
+      width: 300px;
+      max-width: 100vw;
+      border-right: 0;
+      border-left: 1px solid var(--border-default);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
   @include mobile {
     display: none;
+
+    &--list {
+      @include slide-up;
+      top: auto;
+      left: 0;
+      display: block;
+      width: auto;
+      max-height: 70dvh;
+      padding-bottom: calc(var(--sp-4) + env(safe-area-inset-bottom));
+      border-left: 0;
+      border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+      box-shadow: 0 0 0 100vmax var(--overlay-scrim), var(--shadow-md);
+    }
+
+    &__header {
+      height: $touch-target;
+    }
+
+    .side-task {
+      height: $touch-target;
+    }
   }
 }
 

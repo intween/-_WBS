@@ -88,7 +88,7 @@
     &__input,
     &__text {
       min-height: 34px;
-      font-size: var(--fs-card-title);
+      font-size: $fs-input-mobile;
     }
 
     &__remove,

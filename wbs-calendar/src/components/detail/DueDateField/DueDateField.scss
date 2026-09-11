@@ -16,7 +16,7 @@
   @include mobile {
     &__input {
       min-height: $touch-target;
-      font-size: var(--fs-card-title);
+      font-size: $fs-input-mobile;
     }
   }
 }

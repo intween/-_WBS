@@ -38,8 +38,17 @@
   }
 
   @include mobile {
+    padding: 0 0 var(--sp-3);
+
+    &__header {
+      align-items: center;
+      height: $touch-target;
+      padding: 0 var(--sp-3);
+    }
+
     &__columns {
       grid-template-columns: minmax(0, 1fr);
+      border-left: 0;
     }
   }
 }

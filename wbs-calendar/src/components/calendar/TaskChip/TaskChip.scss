@@ -87,4 +87,14 @@
   &[data-overdue='true'] &__bar {
     background: var(--danger);
   }
+
+  @include mobile {
+    height: 40px;
+    padding: 0 var(--sp-3);
+    cursor: pointer;
+
+    &__title {
+      font-size: var(--fs-body);
+    }
+  }
 }

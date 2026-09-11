@@ -81,7 +81,7 @@
   @include mobile {
     flex-wrap: wrap;
     height: auto;
-    padding: var(--sp-2) var(--sp-4);
+    padding: calc(var(--sp-2) + env(safe-area-inset-top)) var(--sp-4) var(--sp-2);
 
     &__period,
     &__help {

@@ -17,7 +17,7 @@ const SidePanel = () => {
 
   if (taskListPanel) {
     return (
-      <aside className="side-panel" aria-label="선택한 구간 업무">
+      <aside className="side-panel side-panel--list" aria-label="선택한 구간 업무">
         <div className="side-panel__header">
           <h2 className="side-panel__heading">{taskListPanel.title}</h2>
           <Button size="sm" onClick={closeTaskListPanel}>

@@ -23,7 +23,7 @@
   &__week {
     @include focus-ring;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 6px;
     flex: 0 0 auto;
     min-height: 32px;
@@ -45,7 +45,7 @@
 
   &__week-range {
     font-size: var(--fs-meta);
-    opacity: .8;
+    opacity: 0.8;
   }
 
   &__body {

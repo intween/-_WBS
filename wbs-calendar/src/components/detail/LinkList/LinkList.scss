@@ -95,7 +95,7 @@
     &__input {
       flex: 1 1 100%;
       min-height: 34px;
-      font-size: var(--fs-card-title);
+      font-size: $fs-input-mobile;
     }
 
     &__submit {

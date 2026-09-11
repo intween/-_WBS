@@ -46,4 +46,18 @@
   &--today {
     background: var(--calendar-today-bg);
   }
+
+  @include mobile {
+    min-height: 0;
+    border-right: 0;
+
+    &__header {
+      padding: 0 var(--sp-3);
+    }
+
+    &__list {
+      gap: var(--sp-1);
+      padding: var(--sp-2) var(--sp-3);
+    }
+  }
 }

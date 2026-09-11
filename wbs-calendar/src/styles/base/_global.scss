@@ -31,6 +31,6 @@ body {
   input,
   textarea,
   select {
-    font-size: var(--fs-card-title);
+    font-size: $fs-input-mobile;
   }
 }

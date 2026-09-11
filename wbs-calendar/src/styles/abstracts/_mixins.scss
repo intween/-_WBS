@@ -2,7 +2,8 @@
 @use 'breakpoints' as *;
 
 @mixin mobile {
-  @media (max-width: #{$bp-mobile}) {
+  @media (max-width: #{$bp-mobile}),
+    (max-height: #{$bp-landscape-height}) and (orientation: landscape) and (pointer: coarse) {
     @content;
   }
 }

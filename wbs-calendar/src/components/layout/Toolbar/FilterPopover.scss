@@ -16,7 +16,6 @@
   }
 
   &__stream {
-    @include stream-tokens;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -30,6 +29,7 @@
   }
 
   .popover__item[data-stream] {
+    @include stream-tokens;
     padding-left: 6px;
   }
 }
