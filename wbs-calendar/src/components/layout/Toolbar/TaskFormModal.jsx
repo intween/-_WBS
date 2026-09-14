@@ -7,9 +7,9 @@ import './TaskFormModal.scss';
 
 const STREAM_OPTIONS = STREAMS.map((stream) => ({ value: stream.id, label: stream.name }));
 
-const emptyDraft = () => ({ title: '', stream: STREAMS[0].id, due: PROJECT.startDate });
+const emptyDraft = (due = PROJECT.startDate) => ({ title: '', stream: STREAMS[0].id, due });
 
-const TaskFormModal = ({ isOpen, onSubmit, onClose }) => {
+const TaskFormModal = ({ isOpen, onSubmit, onClose, initialDue = PROJECT.startDate }) => {
   const containerRef = useRef(null);
   const titleRef = useRef(null);
   const [draft, setDraft] = useState(emptyDraft);
@@ -18,12 +18,12 @@ const TaskFormModal = ({ isOpen, onSubmit, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      setDraft(emptyDraft());
+      setDraft(emptyDraft(initialDue));
       setIsSaving(false);
       // 열리자마자 바로 제목을 칠 수 있게 한다.
       requestAnimationFrame(() => titleRef.current?.focus());
     }
-  }, [isOpen]);
+  }, [isOpen, initialDue]);
 
   if (!isOpen) return null;
 

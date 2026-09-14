@@ -30,6 +30,29 @@
     color: var(--text-primary);
   }
 
+  &__add {
+    @include focus-ring;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--border-default);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--surface-base) 88%, transparent);
+    color: var(--text-tertiary);
+    opacity: .72;
+
+    &:hover {
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
+      opacity: 1;
+    }
+  }
+
   &__chips {
     display: flex;
     flex-direction: column;
