@@ -35,3 +35,27 @@
   align-items: center;
   gap: var(--sp-1);
 }
+
+.toolbar__fab {
+  display: none;
+}
+
+@include mobile {
+  .toolbar__create {
+    display: none;
+  }
+
+  .toolbar__fab {
+    position: fixed;
+    right: var(--sp-4);
+    bottom: calc(64px + env(safe-area-inset-bottom));
+    z-index: 30;
+    display: inline-flex;
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    padding: 0;
+    border-radius: 999px;
+    box-shadow: var(--shadow-lg);
+  }
+}

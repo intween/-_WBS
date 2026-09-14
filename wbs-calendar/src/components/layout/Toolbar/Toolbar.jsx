@@ -34,7 +34,7 @@ const Toolbar = () => {
       </div>
 
       <div className="toolbar__actions">
-        <Button variant="outline" onClick={() => setIsAdding(true)}>
+        <Button variant="outline" className="toolbar__create" onClick={() => setIsAdding(true)}>
           <span className="toolbar__add">
             <Icon name="plus" size={14} />
             업무 추가
@@ -43,6 +43,16 @@ const Toolbar = () => {
         <FilterPopover />
         <OverflowMenu />
       </div>
+
+      <Button
+        variant="primary"
+        className="toolbar__fab"
+        aria-label="업무 추가"
+        title="업무 추가"
+        onClick={() => setIsAdding(true)}
+      >
+        <Icon name="plus" size={18} />
+      </Button>
 
       <TaskFormModal isOpen={isAdding} onSubmit={handleCreate} onClose={() => setIsAdding(false)} />
 
